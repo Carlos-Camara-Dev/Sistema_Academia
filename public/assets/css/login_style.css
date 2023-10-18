@@ -1,0 +1,59 @@
+body {
+  background: #a2a2a2;
+  margin: 0;
+}
+
+#button_enty {
+  background: #fa0144;
+  color: #ffffff;
+  padding: 0.85rem 1rem;
+  width: 15rem;
+}
+
+#button_enty:hover {
+  box-shadow: #a2a2a2 0.1rem 0.1rem 0.5rem;
+  padding: 1rem 1rem;
+  width: 17rem;
+}
+#main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+#main section {
+  align-items: center;
+  background-image: url("../img/academia.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
+  border: 0.15rem solid #ffffff;
+  border-radius: 0.7rem;
+  box-shadow: #a2a2a2 0.15rem 0.2rem 0.7rem;
+  display: flex;
+  height: 35rem;
+  width: 23rem;
+}
+#login {
+  border-radius: 0.7rem;
+  height: 21.5rem;
+  margin: auto auto;
+  text-align: center;
+  width: 21rem;
+}
+#login h2 {
+  background: #fa0144;
+  border: 0.15rem solid #ffffff;
+  border-radius: 1.1rem;
+  color: #ffffff;
+  font-size: 1.7rem;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+}
+#login input {
+  border: 0.15rem solid #ffffff;
+  border-radius: 0.9rem;
+  margin: 0.9rem;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+}
