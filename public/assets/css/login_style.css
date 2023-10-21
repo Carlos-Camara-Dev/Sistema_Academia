@@ -4,11 +4,11 @@ body {
 }
 p {
   background: #ffffff;
-  border: 0.15rem solid #ffffff;
+  border: 0.15rem solid #a2a2a2;
   border-radius: 0.7rem;
   /* font-weight: bolder; */
   margin: 0;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 p a {
   color: #dc0202;
@@ -45,14 +45,21 @@ p a {
   height: 35rem;
   width: 23rem;
 }
-#login {
+#academia_cadastro,
+#academia_login {
   border-radius: 0.7rem;
-  height: 24.5rem;
   margin: auto auto;
   text-align: center;
   width: 21rem;
 }
-#login h2 {
+#academia_cadastro {
+  height: 30rem;
+}
+#academia_login {
+  height: 30rem;
+}
+#academia_cadastro h2,
+#academia_login h2 {
   background: #fa0144;
   border: 0.15rem solid #ffffff;
   border-radius: 1.1rem;
@@ -61,7 +68,8 @@ p a {
   padding: 0.7rem 0.5rem;
   text-align: center;
 }
-#login input {
+#academia_cadastro input,
+#academia_login input {
   border: 0.15rem solid #ffffff;
   border-radius: 0.9rem;
   margin: 0.9rem;
