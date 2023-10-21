@@ -1,0 +1,45 @@
+body {
+  background: #a2a2a2;
+  margin: 0;
+}
+#home_academia_nome {
+  text-align: center;
+  width: 20%;
+}
+#home_academia_nome h2 {
+  font-size: 1.9rem;
+  margin: 0;
+}
+#home_header {
+  align-items: center;
+  background: #e70505;
+  display: flex;
+  justify-content: end;
+  width: 100vw;
+}
+#home_main {
+  align-items: center;
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  width: 100vw;
+}
+#home_main section {
+  background: #cdcccc;
+  border: 0.15rem solid #ffffff;
+  height: 70vh;
+  width: 75vw;
+}
+#home_nav_bar {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+  margin: 0;
+  width: 80%;
+}
+#home_nav_bar a {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.3rem 1.5rem;
+}
