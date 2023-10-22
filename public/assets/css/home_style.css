@@ -7,14 +7,17 @@ body {
   width: 20%;
 }
 #home_academia_nome h2 {
-  font-size: 1.9rem;
+  background: #e70505;
+  border-radius: 0.7rem;
+  color: #ffffff;
+  font-size: 2.1rem;
   margin: 0;
 }
 #home_header {
   align-items: center;
-  background: #e70505;
   display: flex;
   justify-content: end;
+  margin-top: 0.3rem;
   width: 100vw;
 }
 #home_main {
@@ -27,7 +30,7 @@ body {
 #home_main section {
   background: #cdcccc;
   border: 0.15rem solid #ffffff;
-  height: 70vh;
+  height: 80vh;
   width: 75vw;
 }
 #home_nav_bar {
@@ -38,8 +41,16 @@ body {
   width: 80%;
 }
 #home_nav_bar a {
+  background: #e70505;
+  border-radius: 0.7rem;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  margin-left: 0.7rem;
   text-decoration: none;
-  padding: 0.3rem 1.5rem;
+  padding: 0.4rem 1.7rem;
+}
+#home_nav_bar a:hover {
+  background: #cdcdcd;
+  border: 0.1rem solid #ffffff;
+  color: #000000;
 }
