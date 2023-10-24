@@ -26,9 +26,9 @@ body {
   align-items: center;
   border: 0.2rem solid #a2a2a2;
   display: none;
-  flex-flow: column wrap;
-  height: 35vh;
-  justify-content: center;
+  flex-direction: column;
+  height: 60vh;
+  overflow: scroll;
   width: 80vw;
 }
 #gerenciar_main {
@@ -43,6 +43,8 @@ body {
 .aluno_informacao,
 .treino_informacao {
   border: 0.2rem solid #000000;
-  height: 6vh;
+  height: 15rem;
+  font-size: 1.5rem;
+  margin: 1rem;
   width: 70vw;
 }
