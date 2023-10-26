@@ -10,18 +10,14 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <button onclick="abrir_gerenciar_aluno()"> Alunos</button>
-                </li>
-                <li>
-                    <button onclick="abrir_gerenciar_treino()"> Treinos </button>
-                </li>
-                <li>
-                    <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
-                </li>
-            </ul>
+        <nav id="gerenciar_nav_bar">
+            <div id="gerenciar_nav_bar_visualizar">
+                <button onclick="abrir_gerenciar_aluno()"> Alunos</button>
+                <button onclick="abrir_gerenciar_treino()"> Treinos </button>
+            </div>
+            <div id="gerenciar_nav_bar_cadastrar">
+                <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
+            </div>
         </nav>
     </header>
     <main id="gerenciar_main">
@@ -73,7 +69,7 @@
         </section>
         <section id="cadastrar_aluno">
             <form action="app/classes/usuario.php" id="gerenciar_cadastrar_aluno" method=" post">
-                <h2>SISTEMA ACADEMIA </h2>
+                <h2>CADASTRAR ALUNO </h2>
                 <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                 <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                 <!-- <input type="text" name="usuario_senha" placeholder="Digite os treinos" required> -->

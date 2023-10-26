@@ -49,15 +49,16 @@ p a {
 #academia_login {
   border-radius: 0.7rem;
   margin: auto auto;
+  height: 30rem;
   text-align: center;
   width: 21rem;
 }
-#academia_cadastro {
+/* #academia_cadastro {
   height: 30rem;
 }
 #academia_login {
   height: 30rem;
-}
+} */
 #academia_cadastro h2,
 #academia_login h2 {
   background: #fa0144;

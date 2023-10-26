@@ -1,3 +1,6 @@
+* {
+  list-style-type: none;
+}
 /* body {
   margin: 0;
 }
@@ -24,21 +27,73 @@ body {
 #gerenciar_alunos,
 #gerenciar_treinos {
   align-items: center;
+  background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
   display: none;
   flex-direction: column;
-  height: 60vh;
+  height: 80vh;
   overflow: scroll;
   width: 80vw;
 }
+#gerenciar_cadastrar_aluno {
+  background: #dcdcdc;
+  border: 0.2rem solid #a2a2a2;
+  border-radius: 0.7rem;
+  height: 27em;
+  margin: auto auto;
+  text-align: center;
+  width: 20rem;
+}
+/* #gerenciar_cadastrar_aluno h2 {
+  background: #fa0144;
+  border: 0.15rem solid #ffffff;
+  border-radius: 1.1rem;
+  color: #ffffff;
+  font-size: 1.7rem;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+} */
+#gerenciar_cadastrar_aluno input {
+  border: 0.15rem solid #ffffff;
+  border-radius: 0.9rem;
+  margin: 0.9rem;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+}
 #gerenciar_main {
   align-items: center;
-  border: 0.2rem solid #000000;
   display: flex;
   flex-flow: column wrap;
-  height: 80vh;
+  height: 90vh;
   justify-content: center;
+  margin-top: 1vh;
   width: 100vw;
+}
+#gerenciar_nav_bar {
+  border-bottom: 0.2rem solid #a2a2a2;
+  display: flex;
+  margin: 0;
+  width: 100%;
+}
+
+#gerenciar_nav_bar_cadastrar button,
+#gerenciar_nav_bar_visualizar button {
+  border: 0.2rem solid #000000;
+  background: #e70505;
+  border-radius: 0.7rem;
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-left: 0.7rem;
+  text-decoration: none;
+  padding: 0.4rem 1.7rem;
+}
+#gerenciar_nav_bar_cadastrar {
+  text-align: end;
+  width: 70vw;
+}
+#gerenciar_nav_bar_visualizar {
+  display: flex;
+  width: 30vw;
 }
 .aluno_informacao,
 .treino_informacao {
