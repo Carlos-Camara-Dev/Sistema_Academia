@@ -17,6 +17,7 @@
             </div>
             <div id="gerenciar_nav_bar_cadastrar">
                 <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button>
             </div>
             <div id="gerenciar_nav_bar_sair">
                 <button>
@@ -86,7 +87,20 @@
                 </p> -->
             </form>
         </section>
-
+        <section id="cadastrar_treino">
+            <form action="app/classes/treino.php" id="gerenciar_cadastrar_treino" method=" post">
+                <h2>CADASTRAR TREINO </h2>
+                <input type="text" name="treino_nome" placeholder="Digite o nome do treino" required>
+                <input type="text" name="treinoo_id" placeholder="Digite o id do treino" required>
+                <input type="text" name="treino_descricao" placeholder="Digite a descrição do treino" required>
+                <input type="text" name="treino_tipo" placeholder="Digite o tipo de treino" required>
+                <input type="submit" value="Cadastrar" id="button_enty">
+                <!-- <p>A sua academia ainda não tem um cadatro?
+                    <br>
+                    <a href="cadastro.html">Clique aqui!</a>
+                </p> -->
+            </form>
+        </section>
     </main>
 
 </body>
