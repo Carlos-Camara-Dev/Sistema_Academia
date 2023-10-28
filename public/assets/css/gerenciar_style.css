@@ -33,9 +33,17 @@ body {
   padding: 0.8rem 1rem;
   width: 11.5rem;
 }
-#cadastrar_aluno,
+#cadastrar_usuario,
 #cadastrar_treino {
   display: none;
+  flex-direction: column;
+}
+#cadastrar_usuario nav {
+  /* align-items: center; */
+  border-bottom: 0.2rem solid #474747;
+  /* display: flex;
+  justify-content: center; */
+  margin-bottom: 1rem;
 }
 #gerenciar_alunos,
 #gerenciar_treinos {
@@ -50,7 +58,14 @@ body {
   overflow: scroll;
   width: 80vw;
 }
-#gerenciar_cadastrar_aluno,
+#cadastrar_adm-aluno {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+#gerenciar_cadastrar_adm form,
+#gerenciar_cadastrar_aluno form,
 #gerenciar_cadastrar_treino {
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
@@ -61,6 +76,12 @@ body {
   text-align: center;
   width: 20rem;
 }
+#gerenciar_cadastrar_adm form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 /* #gerenciar_cadastrar_aluno h2 {
   background: #fa0144;
   border: 0.15rem solid #ffffff;
@@ -70,7 +91,8 @@ body {
   padding: 0.7rem 0.5rem;
   text-align: center;
 } */
-#gerenciar_cadastrar_aluno input,
+#gerenciar_cadastrar_adm form input,
+#gerenciar_cadastrar_aluno form input,
 #gerenciar_cadastrar_treino input {
   border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
@@ -82,7 +104,7 @@ body {
   align-items: center;
   display: flex;
   flex-flow: column wrap;
-  height: 90vh;
+  height: 85vh;
   justify-content: center;
   margin-top: 1vh;
   width: 100vw;
@@ -96,7 +118,8 @@ body {
 
 #gerenciar_nav_bar_cadastrar button,
 #gerenciar_nav_bar_sair button,
-#gerenciar_nav_bar_visualizar button {
+#gerenciar_nav_bar_visualizar button,
+#cadastrar_usuario nav button {
   border: 0.2rem solid #000000;
   background: #e70505;
   border-radius: 0.7rem;
@@ -109,7 +132,8 @@ body {
 }
 #gerenciar_nav_bar_cadastrar button:hover,
 #gerenciar_nav_bar_sair button:hover,
-#gerenciar_nav_bar_visualizar button:hover {
+#gerenciar_nav_bar_visualizar button:hover,
+#cadastrar_usuario nav button:hover {
   background: #cdcdcd;
   color: #000000;
 }
