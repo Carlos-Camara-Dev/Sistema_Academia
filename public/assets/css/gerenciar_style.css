@@ -21,6 +21,17 @@
 body {
   margin: 0;
 }
+#button_enty {
+  box-shadow: #272727 0.11rem 0.15rem 0.3rem;
+  width: 11rem;
+}
+#button_enty:hover {
+  background: #18db4c;
+  border: 0.2rem solid #424242;
+  box-shadow: none;
+  padding: 0.8rem 1rem;
+  width: 11.5rem;
+}
 #cadastrar_aluno {
   display: none;
 }
@@ -29,6 +40,8 @@ body {
   align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
+  border-radius: 0.7rem;
+  box-shadow: #272727 0.25rem 0.4rem 0.7rem;
   display: none;
   flex-direction: column;
   height: 80vh;
@@ -39,7 +52,8 @@ body {
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
   border-radius: 0.7rem;
-  height: 27em;
+  box-shadow: #272727 0.25rem 0.35rem 0.85rem;
+  height: 27.5em;
   margin: auto auto;
   text-align: center;
   width: 20rem;
@@ -54,11 +68,11 @@ body {
   text-align: center;
 } */
 #gerenciar_cadastrar_aluno input {
-  border: 0.15rem solid #ffffff;
+  border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
   margin: 0.9rem;
   font-size: 1rem;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
 }
 #gerenciar_main {
   align-items: center;
@@ -77,6 +91,7 @@ body {
 }
 
 #gerenciar_nav_bar_cadastrar button,
+#gerenciar_nav_bar_sair button,
 #gerenciar_nav_bar_visualizar button {
   border: 0.2rem solid #000000;
   background: #e70505;
@@ -84,13 +99,24 @@ body {
   color: #ffffff;
   font-size: 1.5rem;
   margin-left: 0.7rem;
+  margin-top: 0.1rem;
   text-decoration: none;
   padding: 0.4rem 1.7rem;
 }
+#gerenciar_nav_bar_cadastrar button:hover,
+#gerenciar_nav_bar_sair button:hover,
+#gerenciar_nav_bar_visualizar button:hover {
+  background: #cdcdcd;
+  color: #000000;
+}
 #gerenciar_nav_bar_cadastrar {
   text-align: end;
-  width: 70vw;
+  width: 60vw;
 }
+#gerenciar_nav_bar_sair {
+  width: 10vw;
+}
+
 #gerenciar_nav_bar_visualizar {
   display: flex;
   width: 30vw;

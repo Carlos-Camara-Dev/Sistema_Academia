@@ -18,6 +18,11 @@
             <div id="gerenciar_nav_bar_cadastrar">
                 <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
             </div>
+            <div id="gerenciar_nav_bar_sair">
+                <button>
+                    <!-- <?php ?> -->
+                    Sair </button>
+            </div>
         </nav>
     </header>
     <main id="gerenciar_main">
@@ -72,8 +77,9 @@
                 <h2>CADASTRAR ALUNO </h2>
                 <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                 <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
-                <!-- <input type="text" name="usuario_senha" placeholder="Digite os treinos" required> -->
-                <input type="submit" value="Entrar" id="button_enty">
+                <input type="text" name="usuario_pagamento_dia" placeholder="Digite o dia do pagamento" required>
+                <input type="text" name="usuario_treino_tipo" placeholder="Digite o tipo de treino" required>
+                <input type="submit" value="Cadastrar" id="button_enty">
                 <!-- <p>A sua academia ainda não tem um cadatro?
                     <br>
                     <a href="cadastro.html">Clique aqui!</a>
