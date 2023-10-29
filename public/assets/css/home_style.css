@@ -24,7 +24,7 @@ body {
 }
 #home_main {
   align-items: center;
-  border-top: 0.2rem solid #474747;
+  border-top: 0.15em solid #cdcdcd;
   display: flex;
   height: 90vh;
   justify-content: center;

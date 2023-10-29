@@ -39,10 +39,8 @@ body {
   flex-direction: column;
 }
 #cadastrar_usuario nav {
-  /* align-items: center; */
-  border-bottom: 0.2rem solid #474747;
-  /* display: flex;
-  justify-content: center; */
+  border-bottom: 0.15rem solid #cdcdcd;
+  border-top: 0.15rem solid #cdcdcd;
   margin-bottom: 1rem;
 }
 #gerenciar_alunos,
@@ -110,7 +108,7 @@ body {
   width: 100vw;
 }
 #gerenciar_nav_bar {
-  border-bottom: 0.2rem solid #474747;
+  border-bottom: 0.15rem solid #cdcdcd;
   display: flex;
   margin: 0;
   width: 100%;
