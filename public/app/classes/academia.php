@@ -10,9 +10,10 @@ class Academia
     private $cnpj;
     private $senha;
     private $email;
-
+    public $academia_status;
     public function __construct($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
     {
+
         $this->set_nome($academia_nome);
         $this->set_cnpj($academia_cnpj);
         $this->set_senha($academia_senha);
@@ -56,18 +57,23 @@ class Academia
         $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj= $academia_cnpj");
 
         if ($verificar_cnpj->rowCount() > 0) {
-
+            $academia_status = true;
             echo '<script  type="text/javascript">
                 alert("O $academia_cnpj já foi cadastrado!");
                 window.history.back();
                 </script>';
         } else {
-            $this->academia_cadastrar($this->get_nome(), $this->get_cnpj(),    $this->get_senha(), $this->get_email(), $conexao);
-            header('Location: ../views/gerenciar.html');
+            // $this->academia_cadastrar($this->get_nome(), $this->get_cnpj(),    $this->get_senha(), $this->get_email(), $conexao);
+
         }
     }
     private function academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
     {
         $cadastrar_academia = $conexao->query("INSERT INTO Academia (academia_nome, academia_cnpj, academia_senha, academia_email) VALUES('$academia_nome', '$academia_cnpj','$academia_senha', '$academia_email')");
+        echo '<script  type="text/javascript">
+                alert("A $academia_nome foi craiada. Seja bem-vindo!");
+                window.history.back();
+                </script>';
+        header('Location: ../views/gerenciar.html');
     }
 }

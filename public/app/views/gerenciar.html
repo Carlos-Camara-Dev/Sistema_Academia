@@ -12,12 +12,8 @@
     <header>
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
-                <button onclick="abrir_gerenciar_aluno()"> Alunos</button>
+                <button onclick="abrir_gerenciar_usuarios()"> Usuarios</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
-            </div>
-            <div id="gerenciar_nav_bar_cadastrar">
-                <button onclick="abrir_cadastrar_usuario()"> Cadastrar Usuario </button>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button>
             </div>
             <div id="gerenciar_nav_bar_sair">
                 <button>
@@ -27,85 +23,103 @@
         </nav>
     </header>
     <main id="gerenciar_main">
-        <section id="gerenciar_alunos">
-            <h2>Gerenciar Alunos</h2>
-            <div class="aluno_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
+        <section id="gerenciar_usuarios">
+            <div id="gerenciar_nav_bar_alunos">
+                <button onclick="abrir_cadastrar_usuario()"> Cadastrar Usuario </button>
             </div>
-            <div class="aluno_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="aluno_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="aluno_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="aluno_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
+            <section id="gerenciar_alunos_lista">
+                <h2>Gerenciar Alunos</h2>
+                <div class="aluno_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="aluno_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="aluno_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="aluno_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="aluno_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+            </section>
+            <section id="cadastrar_usuario">
+                <nav>
+                    <button onclick="abrir_cadastrar_adm()"> Cadastrar Usuario </button> <button
+                        onclick="abrir_cadastrar_aluno()"> Cadastrar Usuario </button>
+                </nav>
+                <section id="cadastrar_adm-aluno">
+                    <!-- <div id="gerenciar_cadastrar_adm">
+                        <form action="app/classes/usuario.php" method=" post">
+                            <h2>CADASTRAR ADM </h2>
+                            <input type="text" name="adm_nome" placeholder="Digite o nome do adm" required>
+                            <input type="text" name="adm_id" placeholder="Digite o id do adm" required>
+                            <input type="text" name="adm_senha" placeholder="Digite a senha do adm" required>
+                            <input type="submit" value="Cadastrar" id="button_enty">
+                        </form>
+                    </div> -->
+                    <div id="gerenciar_cadastrar_aluno">
+                        <form action="app/classes/adm.php" method=" post">
+                            <h2>CADASTRAR ALUNO </h2>
+                            <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
+                            <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
+                            <input type="text" name="usuario_pagamento_dia" placeholder="Digite o dia do pagamento"
+                                required>
+                            <input type="text" name="usuario_treino_tipo" placeholder="Digite o tipo de treino"
+                                required>
+                            <input type="submit" value="Cadastrar" id="button_enty">
+                        </form>
+                    </div>
+                </section>
+            </section>
         </section>
         <section id="gerenciar_treinos">
-            <h2>Gerenciar Treinos</h2>
-            <div class="treino_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
+            <div id="gerenciar_nav_bar_treinos">
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button>
             </div>
-            <div class="treino_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="treino_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="treino_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-            <div class="treino_informacao">
-                feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
-                id quod mazim placerat facer possim as
-            </div>
-        </section>
-        <section id="cadastrar_usuario">
-            <nav>
-                <button onclick="abrir_cadastrar_adm()">
-                    Cadastrar ADM
-                </button>
-                <button onclick="abrir_cadastrar_aluno()">
-                    Cadastrar Aluno
-                </button>
-            </nav>
-            <section id="cadastrar_adm-aluno">
-                <div id="gerenciar_cadastrar_adm">
-                    <form action="app/classes/usuario.php" method=" post">
-                        <h2>CADASTRAR ADM </h2>
-                        <input type="text" name="adm_nome" placeholder="Digite o nome do adm" required>
-                        <input type="text" name="adm_id" placeholder="Digite o id do adm" required>
-                        <input type="text" name="adm_senha" placeholder="Digite a senha do adm" required>
-                        <input type="submit" value="Cadastrar" id="button_enty">
-                    </form>
+            <section id="gerenciar_treinos_lista">
+                <h2>Gerenciar Treinos</h2>
+                <div class="treino_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
                 </div>
-                <div id="gerenciar_cadastrar_aluno">
-                    <form action="app/classes/adm.php" method=" post">
-                        <h2>CADASTRAR ALUNO </h2>
-                        <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
-                        <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
-                        <input type="text" name="usuario_pagamento_dia" placeholder="Digite o dia do pagamento"
-                            required>
-                        <input type="text" name="usuario_treino_tipo" placeholder="Digite o tipo de treino" required>
-                        <input type="submit" value="Cadastrar" id="button_enty">
-                    </form>
+                <div class="treino_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="treino_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="treino_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
+                </div>
+                <div class="treino_informacao">
+                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
+                    doming
+                    id quod mazim placerat facer possim as
                 </div>
             </section>
         </section>
-        <section id="cadastrar_treino">
+
+        <!-- <section id="cadastrar_treino">
             <form action="app/classes/treino.php" id="gerenciar_cadastrar_treino" method=" post">
                 <h2>CADASTRAR TREINO </h2>
                 <input type="text" name="treino_nome" placeholder="Digite o nome do treino" required>
@@ -114,7 +128,7 @@
                 <input type="text" name="treino_tipo" placeholder="Digite o tipo de treino" required>
                 <input type="submit" value="Cadastrar" id="button_enty">
             </form>
-        </section>
+        </section> -->
     </main>
 
     <script src="../../assets/js/gerenciar_js.js"></script>

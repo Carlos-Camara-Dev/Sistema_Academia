@@ -22,28 +22,29 @@ body {
   background: #a2a2a2;
   margin: 0;
 }
+h2 {
+  font-size: 1.7rem;
+}
 #button_enty {
-  box-shadow: #272727 0.11rem 0.15rem 0.3rem;
-  width: 11rem;
+  box-shadow: #272727 0.25rem 0.3rem 0.45rem;
+  width: 15.5rem;
 }
 #button_enty:hover {
   background: #18db4c;
   border: 0.2rem solid #424242;
-  box-shadow: none;
-  padding: 0.8rem 1rem;
-  width: 11.5rem;
+  /* width: 15.5rem; */
 }
 #cadastrar_usuario,
 #cadastrar_treino {
   display: none;
   flex-direction: column;
 }
-#cadastrar_usuario nav {
+/* #cadastrar_usuario nav {
   border-bottom: 0.15rem solid #cdcdcd;
   border-top: 0.15rem solid #cdcdcd;
   margin-bottom: 1rem;
-}
-#gerenciar_alunos,
+} */
+#gerenciar_usuarios,
 #gerenciar_treinos {
   align-items: center;
   background: #dcdcdc;
@@ -58,9 +59,10 @@ body {
 }
 #cadastrar_adm-aluno {
   align-items: center;
-  display: flex;
+  display: none;
   justify-content: space-evenly;
-  width: 100vw;
+  /* width: 80vw; */
+  margin: 1rem;
 }
 #gerenciar_cadastrar_adm form,
 #gerenciar_cadastrar_aluno form,
@@ -69,10 +71,10 @@ body {
   border: 0.2rem solid #a2a2a2;
   border-radius: 0.7rem;
   box-shadow: #272727 0.25rem 0.35rem 0.85rem;
-  height: 27.5em;
+  height: 33.5em;
   margin: auto auto;
   text-align: center;
-  width: 20rem;
+  width: 25rem;
 }
 #gerenciar_cadastrar_adm form {
   align-items: center;
@@ -95,8 +97,8 @@ body {
   border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
   margin: 0.9rem;
-  font-size: 1rem;
-  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  padding: 1.1rem 1.7rem;
 }
 #gerenciar_main {
   align-items: center;
@@ -114,7 +116,13 @@ body {
   width: 100%;
 }
 
-#gerenciar_nav_bar_cadastrar button,
+#gerenciar_nav_bar_alunos,
+#gerenciar_nav_bar_treinos {
+  text-align: end;
+  width: 78vw;
+}
+#gerenciar_nav_bar_alunos button,
+#gerenciar_nav_bar_treinos button,
 #gerenciar_nav_bar_sair button,
 #gerenciar_nav_bar_visualizar button,
 #cadastrar_usuario nav button {
@@ -124,20 +132,17 @@ body {
   color: #ffffff;
   font-size: 1.5rem;
   margin-left: 0.7rem;
-  margin-top: 0.1rem;
+  margin-top: 0.35rem;
   text-decoration: none;
   padding: 0.4rem 1.7rem;
 }
-#gerenciar_nav_bar_cadastrar button:hover,
+#gerenciar_nav_bar_alunos button:hover,
+#gerenciar_nav_bar_treinos button:hover,
 #gerenciar_nav_bar_sair button:hover,
 #gerenciar_nav_bar_visualizar button:hover,
 #cadastrar_usuario nav button:hover {
   background: #cdcdcd;
   color: #000000;
-}
-#gerenciar_nav_bar_cadastrar {
-  text-align: end;
-  width: 60vw;
 }
 #gerenciar_nav_bar_sair {
   width: 10vw;
@@ -145,7 +150,7 @@ body {
 
 #gerenciar_nav_bar_visualizar {
   display: flex;
-  width: 30vw;
+  width: 90vw;
 }
 .aluno_informacao,
 .treino_informacao {
@@ -154,4 +159,9 @@ body {
   font-size: 1.5rem;
   margin: 1rem;
   width: 70vw;
+}
+#gerenciar_alunos_lista,
+#gerenciar_treinos_lista {
+  border: 0.1rem solid #000000;
+  text-align: center;
 }
