@@ -12,7 +12,7 @@
     <header>
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
-                <button onclick="abrir_gerenciar_adm()"> ADM'S </button>
+                <button onclick="abrir_gerenciar_adms()"> ADM'S </button>
                 <button onclick="abrir_gerenciar_alunos()"> Usuarios</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
             </div>
@@ -24,13 +24,15 @@
         </nav>
     </header>
     <main id="gerenciar_main">
-        <!-- <section id="gerenciar_adms">
+        <!-- Gerenciar Adm's -->
+        <section id="gerenciar_adms">
             <nav>
                 <button onclick="abrir_cadastrar_adm()"> Cadastrar Adm </button>
-                <button onclick="abrir_gerenciar_adm_lista()"> Gerenciar Adm's </button>
+                <button onclick="abrir_gerenciar_adms_lista()"> Gerenciar Adm's </button>
             </nav>
+            <!-- Lista de Adm's -->
             <section id="gerenciar_adms_lista">
-                <h2>Gerenciar ADM'</h2>
+                <h2>Gerenciar ADM'S</h2>
                 <div class="adm_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
@@ -56,16 +58,19 @@
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                 <div id="gerenciar_cadastrar_adm">
-                        <form action="app/classes/usuario.php" method=" post">
-                            <h2>CADASTRAR ADM </h2>
-                            <input type="text" name="adm_nome" placeholder="Digite o nome do adm" required>
-                            <input type="text" name="adm_id" placeholder="Digite o id do adm" required>
-                            <input type="text" name="adm_senha" placeholder="Digite a senha do adm" required>
-                            <input type="submit" value="Cadastrar" id="button_enty">
-                        </form>
-                    </div>
-            </section> -->
+            </section>
+            <!-- Cadastrar Adm -->
+            <section id="cadastrar_adm">
+                <form action="app/classes/usuario.php" method=" post">
+                    <h2>CADASTRAR ADM </h2>
+                    <input type="text" name="adm_nome" placeholder="Digite o nome do adm" required>
+                    <input type="text" name="adm_id" placeholder="Digite o id do adm" required>
+                    <input type="email" name="adm_email" placeholder="Digite o email do adm" required>
+                    <input type="text" name="adm_senha" placeholder="Digite a senha do adm" required>
+                    <input type="submit" value="Cadastrar" id="button_enty">
+                </form>
+            </section>
+        </section>
 
         <!-- Gerenciar Alunos -->
         <section id="gerenciar_alunos">
@@ -108,6 +113,7 @@
                     <h2>CADASTRAR ALUNO </h2>
                     <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
+                    <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="text" name="usuario_pagamento_dia" placeholder="Digite o dia do pagamento" required>
                     <input type="text" name="usuario_treino_tipo" placeholder="Digite o tipo de treino" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
