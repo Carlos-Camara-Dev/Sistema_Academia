@@ -1,23 +1,7 @@
 * {
   list-style-type: none;
 }
-/* body {
-  margin: 0;
-}
-.gerenciar_opcoes p {
-  background: #ff0000;
-  border: 0.2rem solid #000000;
-}
-#tabs,
-#tabs ul,
-#tabs ul li {
-  background: #a2a2a2;
-  border: none;
-  font-size: 1.2rem;
-}
-#tabs ul li a {
-  background: #e70505;
-} */
+
 body {
   background: #a2a2a2;
   margin: 0;
@@ -34,17 +18,37 @@ h2 {
   border: 0.2rem solid #424242;
   /* width: 15.5rem; */
 }
-#cadastrar_usuario,
+#cadastrar_adm,
+#cadastrar_aluno,
 #cadastrar_treino {
   display: none;
-  flex-direction: column;
+  margin: 1rem;
 }
-/* #cadastrar_usuario nav {
-  border-bottom: 0.15rem solid #cdcdcd;
-  border-top: 0.15rem solid #cdcdcd;
-  margin-bottom: 1rem;
-} */
-#gerenciar_usuarios,
+
+#cadastrar_adm form,
+#cadastrar_aluno form,
+#cadastrar_treino form {
+  background: #dcdcdc;
+  border: 0.2rem solid #a2a2a2;
+  border-radius: 0.7rem;
+  box-shadow: #272727 0.25rem 0.35rem 0.85rem;
+  height: 33.5em;
+  margin: auto auto;
+  text-align: center;
+  width: 23rem;
+}
+
+#cadastrar_adm form input,
+#cadastrar_aluno form input,
+#cadastrar_treino form input {
+  border: 0.15rem solid #a2a2a2;
+  border-radius: 0.9rem;
+  margin: 0.75rem;
+  font-size: 1.1rem;
+  padding: 1.1rem 2.3rem;
+}
+#gerenciar_adm.s,
+#gerenciar_alunos,
 #gerenciar_treinos {
   align-items: center;
   background: #dcdcdc;
@@ -57,56 +61,12 @@ h2 {
   overflow: scroll;
   width: 80vw;
 }
-#cadastrar_adm-aluno {
-  align-items: center;
-  display: none;
-  justify-content: space-evenly;
-  /* width: 80vw; */
-  margin: 1rem;
-}
-#gerenciar_cadastrar_adm form,
-#gerenciar_cadastrar_aluno form,
-#gerenciar_cadastrar_treino {
-  background: #dcdcdc;
-  border: 0.2rem solid #a2a2a2;
-  border-radius: 0.7rem;
-  box-shadow: #272727 0.25rem 0.35rem 0.85rem;
-  height: 33.5em;
-  margin: auto auto;
-  text-align: center;
-  width: 25rem;
-}
-#gerenciar_cadastrar_adm form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-/* #gerenciar_cadastrar_aluno h2 {
-  background: #fa0144;
-  border: 0.15rem solid #ffffff;
-  border-radius: 1.1rem;
-  color: #ffffff;
-  font-size: 1.7rem;
-  padding: 0.7rem 0.5rem;
-  text-align: center;
-} */
-#gerenciar_cadastrar_adm form input,
-#gerenciar_cadastrar_aluno form input,
-#gerenciar_cadastrar_treino input {
-  border: 0.15rem solid #a2a2a2;
-  border-radius: 0.9rem;
-  margin: 0.9rem;
-  font-size: 1.1rem;
-  padding: 1.1rem 1.7rem;
-}
 #gerenciar_main {
   align-items: center;
   display: flex;
   flex-flow: column wrap;
   height: 85vh;
   justify-content: center;
-  margin-top: 1vh;
   width: 100vw;
 }
 #gerenciar_nav_bar {
@@ -115,32 +75,31 @@ h2 {
   margin: 0;
   width: 100%;
 }
-
-#gerenciar_nav_bar_alunos,
-#gerenciar_nav_bar_treinos {
+#gerenciar_adms nav,
+#gerenciar_alunos nav,
+#gerenciar_treinos nav {
   text-align: end;
   width: 78vw;
 }
-#gerenciar_nav_bar_alunos button,
-#gerenciar_nav_bar_treinos button,
+#gerenciar_adms nav button,
+#gerenciar_alunos nav button,
 #gerenciar_nav_bar_sair button,
 #gerenciar_nav_bar_visualizar button,
-#cadastrar_usuario nav button {
+#gerenciar_treinos button {
   border: 0.2rem solid #000000;
   background: #e70505;
   border-radius: 0.7rem;
   color: #ffffff;
   font-size: 1.5rem;
-  margin-left: 0.7rem;
-  margin-top: 0.35rem;
+  margin: 0.7rem;
   text-decoration: none;
   padding: 0.4rem 1.7rem;
 }
-#gerenciar_nav_bar_alunos button:hover,
-#gerenciar_nav_bar_treinos button:hover,
+#gerenciar_adms nav button:hover,
+#gerenciar_alunos nav button:hover,
 #gerenciar_nav_bar_sair button:hover,
 #gerenciar_nav_bar_visualizar button:hover,
-#cadastrar_usuario nav button:hover {
+#gerenciar_treinos button:hover {
   background: #cdcdcd;
   color: #000000;
 }
@@ -152,6 +111,16 @@ h2 {
   display: flex;
   width: 90vw;
 }
+#gerenciar_adms_lista,
+#gerenciar_alunos_lista,
+#gerenciar_treinos_lista {
+  border: 0.1rem solid #000000;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+/* Classes: */
+.adm_informacao,
 .aluno_informacao,
 .treino_informacao {
   border: 0.2rem solid #000000;
@@ -159,9 +128,4 @@ h2 {
   font-size: 1.5rem;
   margin: 1rem;
   width: 70vw;
-}
-#gerenciar_alunos_lista,
-#gerenciar_treinos_lista {
-  border: 0.1rem solid #000000;
-  text-align: center;
 }
