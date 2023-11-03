@@ -1,0 +1,9 @@
+CREATE DATABASE Sistema_Academia;
+
+CREATE TABLE Academia(
+    academia_nome VARCHAR(30) NOT NULL,
+    academia_cnpj VARCHAR(15)  PRIMARY KEY,
+    academia_email VARCHAR(50)  NOT NULL,
+    academia_senha VARCHAR(30) NOT NULL
+ );
+ 
