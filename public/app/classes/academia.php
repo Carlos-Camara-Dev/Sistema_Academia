@@ -1,18 +1,12 @@
 <?php
 require_once("../models/banco_conexao.php");
-$academia_nome = $_POST['academia_nome'];
-$academia_cnpj = $_POST['academia_cnpj'];
-$academia_senha = $_POST['academia_senha'];
-$academia_email = $_POST['academia_email'];
 
-$academia = new Academia($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
 class Academia
 {
     private $nome;
     private $cnpj;
     private $senha;
     private $email;
-    public $academia_status;
     public function __construct($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
     {
 
@@ -20,7 +14,6 @@ class Academia
         $this->set_cnpj($academia_cnpj);
         $this->set_senha($academia_senha);
         $this->set_email($academia_email);
-        $this->academia_verificar($this->get_cnpj(), $conexao);
     }
     public function get_nome()
     {
@@ -54,27 +47,16 @@ class Academia
     {
         $this->email = $email;
     }
-    private function academia_verificar($academia_cnpj, $conexao)
-    {
-        $verificar_cnpj = $conexao->query("SELECT * FROM academia WHERE academia_cnpj= '$academia_cnpj'");
 
-        if ($verificar_cnpj->rowCount() > 0) {
-            $academia_status = true;
-            echo '<script  type="text/javascript">
-                alert("O $academia_cnpj já foi cadastrado!");
-                window.history.back();
-                </script>';
-        } else {
-            $this->academia_cadastrar($this->get_nome(), $this->get_cnpj(),    $this->get_senha(), $this->get_email(), $conexao);
-        }
-    }
-    private function academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
+    public function academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
     {
         $cadastrar_academia = $conexao->query("INSERT INTO academia(academia_nome, academia_cnpj, academia_email, academia_senha) VALUES('$academia_nome', '$academia_cnpj','$academia_email','$academia_senha')");
         echo '<script  type="text/javascript">
-                alert("A $academia_nome foi craiada. Seja bem-vindo!");
-                window.history.back();
+                alert("A $academia_nome foi criada. Seja bem-vindo!");
                 </script>';
         header('Location: ../views/gerenciar.html');
+    }
+    public function buscar_dados()
+    {
     }
 }
