@@ -2,7 +2,7 @@
 require_once("../models/banco_conexao.php");
 $operacao = $_GET['operacao'];
 
-// Dados da academia:
+// Dados da Academia:
 $academia_nome = $_POST['academia_nome'];
 $academia_cnpj = $_POST['academia_cnpj'];
 $academia_senha = $_POST['academia_senha'];
@@ -11,19 +11,31 @@ $academia_status = false;
 
 // Dados dos Alunos:
 $aluno_nome = $_POST['aluno_nome'];
-$aluno_cnpj = $_POST['aluno_cnpj'];
+$aluno_id = $_POST['aluno_cnpj'];
 $alunos_senha = $_POST['aluno_senha'];
 $aluno_email = $_POST['aluno_email'];
 $aluno_status = false;
 
 // Verificar Academia:
-if ($operacao == "academia") {
-    verificar_academia($academia_cnpj, $academia_senha, $conexao);
-    if ($academia_status == false) {
-        $academia = new Academia($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
-        $academia->academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
-    }
+switch ($operacao) {
+    case 'academia':
+        verificar_academia($academia_cnpj, $academia_senha, $conexao);
+        if ($academia_status == false) {
+            $academia = new Academia($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
+            $academia->academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
+        }
+        break;
+    case 'aluno':
+        verificar_aluno($aluno_cnpj, $aluno_senha, $conexao);
+        if ($academia_status == false) {
+            $aluno = new Academia($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
+            $aluno->academia_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
+        }
+    default:
+        # code...
+        break;
 }
+
 
 
 function verificar_academia($academia_cnpj, $academia_senha, $conexao)
@@ -34,6 +46,18 @@ function verificar_academia($academia_cnpj, $academia_senha, $conexao)
         $academia_status = true;
         echo '<script  type="text/javascript">
             alert("O $academia_cnpj já foi cadastrado!");
+            window.history.back();
+            </script>';
+    }
+}
+function verificar_aluno($aluno_id, $aluno_senha, $conexao)
+{
+    $verificar_cnpj = $conexao->query("SELECT * FROM aluno WHERE aluno_id= '$aluno_id' AND aluno_senha='$aluno_senha'");
+
+    if ($verificar_cnpj->rowCount() > 0) {
+        $academia_status = true;
+        echo '<script  type="text/javascript">
+            alert("O $aluno_senha já foi cadastrado!");
             window.history.back();
             </script>';
     }
