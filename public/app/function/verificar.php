@@ -41,9 +41,9 @@ switch ($operacao) {
         break;
     case 'personal':
         verificar_personal($adm_cnpj, $adm_senha, $conexao);
-        if ($adm_status == false) {
-            $adm = new Academia($adm_nome, $adm_id, $adm_senha, $adm_email, $conexao);
-            $adm->personalr_cadastrar($adm_nome, $adm_id, $adm_senha, $adm_email, $conexa);
+        if ($personal_status == false) {
+            $personal = new Academia($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao);
+            $personal->personal_cadastrar($personal_nome, $personal_id, $personal_senha, $personal_email, $conexa);
         }
         break;
     default:
@@ -65,18 +65,6 @@ function verificar_academia($academia_cnpj, $academia_senha, $conexao)
             </script>';
     }
 }
-function verificar_personal($personal_id, $personal_senha, $conexao)
-{
-    $verificar_cnpj = $conexao->query("SELECT * FROM personal WHERE aluno_id= '$personal_id' AND personal_senha='$personal_senha'");
-
-    if ($verificar_cnpj->rowCount() > 0) {
-        $academia_status = true;
-        echo '<script  type="text/javascript">
-            alert("O $personal_id já foi cadastrado!");
-            window.history.back();
-            </script>';
-    }
-}
 function verificar_aluno($aluno_id, $aluno_senha, $conexao)
 {
     $verificar_cnpj = $conexao->query("SELECT * FROM aluno WHERE aluno_id= '$aluno_id' AND aluno_senha='$aluno_senha'");
@@ -85,6 +73,18 @@ function verificar_aluno($aluno_id, $aluno_senha, $conexao)
         $academia_status = true;
         echo '<script  type="text/javascript">
             alert("O $aluno_senha já foi cadastrado!");
+            window.history.back();
+            </script>';
+    }
+}
+function verificar_personal($personal_id, $personal_senha, $conexao)
+{
+    $verificar_cnpj = $conexao->query("SELECT * FROM personal WHERE aluno_id= '$personal_id' AND personal_senha='$personal_senha'");
+
+    if ($verificar_cnpj->rowCount() > 0) {
+        $academia_status = true;
+        echo '<script  type="text/javascript">
+            alert("O $personal_id já foi cadastrado!");
             window.history.back();
             </script>';
     }

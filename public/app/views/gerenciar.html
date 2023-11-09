@@ -65,11 +65,11 @@
             </section>
             <!-- Cadastrar Adm -->
             <section id="cadastrar_adm">
-                <form action="app/classes/verificar.php?operacao=operacao" method=" post">
+                <form action="app/classes/verificar.php?operacao=personal" method=" post">
                     <h2>CADASTRAR PERSONAL </h2>
                     <input type="text" name="personal_nome" placeholder="Digite o nome do personal" required>
                     <input type="text" name="personal_id" placeholder="Digite o id do personal" required>
-                    <input type="email" name="personalemail" placeholder="Digite o email do personal" required>
+                    <input type="email" name="personal_email" placeholder="Digite o email do personal" required>
                     <input type="text" name="personal_senha" placeholder="Digite a senha do personal" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
@@ -113,7 +113,7 @@
             </section>
             <!-- Cadsatrar Alunos -->
             <section id="cadastrar_aluno">
-                <form action="app/classes/adm.php" method=" post">
+                <form action="app/classes/verificar.php?operacao=aluno" method=" post">
                     <h2>CADASTRAR ALUNO </h2>
                     <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
