@@ -16,6 +16,13 @@ $alunos_senha = $_POST['aluno_senha'];
 $aluno_email = $_POST['aluno_email'];
 $aluno_status = false;
 
+// Dados dos Personal:
+$personal_nome = $_POST['personal_nome'];
+$personal_id = $_POST['personal_cnpj'];
+$personal_senha = $_POST['personal_senha'];
+$personal_email = $_POST['personal_email'];
+$personal_status = false;
+
 // Verificar Academia:
 switch ($operacao) {
     case 'academia':
@@ -27,10 +34,18 @@ switch ($operacao) {
         break;
     case 'aluno':
         verificar_aluno($aluno_cnpj, $aluno_senha, $conexao);
-        if ($academia_status == false) {
+        if ($aluno_status == false) {
             $aluno = new Academia($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
-            $aluno->academia_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
+            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
         }
+        break;
+    case 'personal':
+        verificar_personal($adm_cnpj, $adm_senha, $conexao);
+        if ($adm_status == false) {
+            $adm = new Academia($adm_nome, $adm_id, $adm_senha, $adm_email, $conexao);
+            $adm->personalr_cadastrar($adm_nome, $adm_id, $adm_senha, $adm_email, $conexa);
+        }
+        break;
     default:
         # code...
         break;
@@ -46,6 +61,18 @@ function verificar_academia($academia_cnpj, $academia_senha, $conexao)
         $academia_status = true;
         echo '<script  type="text/javascript">
             alert("O $academia_cnpj já foi cadastrado!");
+            window.history.back();
+            </script>';
+    }
+}
+function verificar_personal($personal_id, $personal_senha, $conexao)
+{
+    $verificar_cnpj = $conexao->query("SELECT * FROM personal WHERE aluno_id= '$personal_id' AND personal_senha='$personal_senha'");
+
+    if ($verificar_cnpj->rowCount() > 0) {
+        $academia_status = true;
+        echo '<script  type="text/javascript">
+            alert("O $personal_id já foi cadastrado!");
             window.history.back();
             </script>';
     }
