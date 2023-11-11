@@ -65,7 +65,7 @@
             </section>
             <!-- Cadastrar Adm -->
             <section id="cadastrar_personal">
-                <form action="app/classes/verificar.php?operacao=personal" method=" post">
+                <form action="../function/verificar.php?operacao=personal" method="post">
                     <h2>CADASTRAR PERSONAL </h2>
                     <input type="text" name="personal_nome" placeholder="Digite o nome do personal" required>
                     <input type="text" name="personal_id" placeholder="Digite o id do personal" required>
@@ -113,12 +113,12 @@
             </section>
             <!-- Cadsatrar Alunos -->
             <section id="cadastrar_aluno">
-                <form action="app/classes/verificar.php?operacao=aluno" method=" post">
+                <form action="../function/verificar.php?operacao=aluno" method="post">
                     <h2>CADASTRAR ALUNO </h2>
                     <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
-                    <input type="text" name="usuario_pagamento_dia" placeholder="Digite o dia do pagamento" required>
+                    <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required>
                     <input type="text" name="usuario_treino_tipo" placeholder="Digite o tipo de treino" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>

@@ -3,16 +3,16 @@ class Aluno
 {
     private $nome;
     private $id;
-    private $senha;
+    private $pagamento_dia;
     private $email;
     private Academia $academia;
     private Treino $treino;
-    public function __construct($aluno_nome, $aluno_id, $aluno_senha, $alunol_email, $conexao)
+    public function __construct($aluno_nome, $aluno_id, $aluno_pagamento_dia, $alunol_email, $conexao)
     {
 
         $this->set_nome($aluno_nome);
         $this->set_id($aluno_id);
-        $this->set_senha($aluno_senha);
+        $this->set_pagamento_dia($aluno_pagamento_dia);
         $this->set_email($alunol_email);
     }
     public function get_nome()
@@ -31,13 +31,13 @@ class Aluno
     {
         $this->id = $id;
     }
-    public function get_senha()
+    public function get_pagamento_dia()
     {
-        return $this->senha;
+        return $this->pagamento_dia;
     }
-    public function set_senha($senha)
+    public function set_pagamento_dia($pagamento_dia)
     {
-        $this->senha = $senha;
+        $this->pagamento_dia = $pagamento_dia;
     }
     public function get_email()
     {
@@ -48,9 +48,9 @@ class Aluno
         $this->email = $email;
     }
 
-    public function aluno_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao)
+    public function aluno_cadastrar($aluno_nome, $aluno_id, $aluno_pagamento_dia, $aluno_email, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO personal(personal_nome, personal_id, personal_email, personal_senha) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha')");
+        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_pagamento_dia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_pagamento_dia')");
         echo '<script  type="text/javascript">
                 alert("A $aluno_nome foi criada. Seja bem-vindo!");
                 </script>';

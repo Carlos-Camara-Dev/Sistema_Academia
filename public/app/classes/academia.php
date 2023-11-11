@@ -51,9 +51,9 @@ class Academia
     public function academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao)
     {
         $cadastrar_academia = $conexao->query("INSERT INTO academia(academia_nome, academia_cnpj, academia_email, academia_senha) VALUES('$academia_nome', '$academia_cnpj','$academia_email','$academia_senha')");
-        echo '<script  type="text/javascript">
-                alert("A $academia_nome foi criada. Seja bem-vindo!");
-                </script>';
+        echo '<script  type="text/javascript">' .
+            "alert('A $academia_nome foi criada. Seja bem-vindo!');" .
+            '</script>';
         header('Location: ../views/gerenciar.html');
     }
     public function buscar_dados()

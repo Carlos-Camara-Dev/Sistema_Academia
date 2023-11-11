@@ -20,7 +20,6 @@ CREATE TABLE Aluno(
    aluno_nome VARCHAR(30) NOT NULL,
    aluno_id VARCHAR(5) PRIMARY KEY,
    aluno_email VARCHAR(100) NOT NULL,
-   aluno_senha VARCHAR(30) NOT NULL,
    aluno_academia VARCHAR(30) NOT NULL,
    aluno_treino VARCHAR(30) NOT NULL,
    FOREIGN KEY(aluno_academia) REFERENCES Academia(academia_cnpj),
