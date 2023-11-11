@@ -1,19 +1,19 @@
 <?php
-require_once("../models/banco_conexao.php");
-
-class Personal
+class Aluno
 {
     private $nome;
     private $id;
     private $senha;
     private $email;
-    public function __construct($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao)
+    private Academia $academia;
+    private Treino $treino;
+    public function __construct($aluno_nome, $aluno_id, $aluno_senha, $alunol_email, $conexao)
     {
 
-        $this->set_nome($personal_nome);
-        $this->set_id($personal_id);
-        $this->set_senha($personal_senha);
-        $this->set_email($personal_email);
+        $this->set_nome($aluno_nome);
+        $this->set_id($aluno_id);
+        $this->set_senha($aluno_senha);
+        $this->set_email($alunol_email);
     }
     public function get_nome()
     {
@@ -48,11 +48,11 @@ class Personal
         $this->email = $email;
     }
 
-    public function personal_cadastrar($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao)
+    public function aluno_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO personal(personal_nome, personal_id, personal_email, personal_senha) VALUES('$personal_nome', '$personal_id','$personal_email','$personal_senha')");
+        $cadastrar_personal = $conexao->query("INSERT INTO personal(personal_nome, personal_id, personal_email, personal_senha) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha')");
         echo '<script  type="text/javascript">
-                alert("A $personal_nome foi criada. Seja bem-vindo!");
+                alert("A $aluno_nome foi criada. Seja bem-vindo!");
                 </script>';
         header('Location: ../views/gerenciar.html');
     }

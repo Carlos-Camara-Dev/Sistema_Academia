@@ -35,14 +35,14 @@ switch ($operacao) {
     case 'aluno':
         verificar_aluno($aluno_cnpj, $aluno_senha, $conexao);
         if ($aluno_status == false) {
-            $aluno = new Academia($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
+            $aluno = new Aluno($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
             $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_senha, $aluno_email, $conexao);
         }
         break;
     case 'personal':
         verificar_personal($adm_cnpj, $adm_senha, $conexao);
         if ($personal_status == false) {
-            $personal = new Academia($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao);
+            $personal = new Personal($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao);
             $personal->personal_cadastrar($personal_nome, $personal_id, $personal_senha, $personal_email, $conexa);
         }
         break;

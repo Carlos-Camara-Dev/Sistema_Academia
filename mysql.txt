@@ -1,21 +1,37 @@
 CREATE DATABASE Sistema_Academia;
 
 CREATE TABLE Academia(
-    academia_nome VARCHAR(30) NOT NULL,
-    academia_cnpj VARCHAR(15)  PRIMARY KEY,
-    academia_email VARCHAR(50)  NOT NULL,
-    academia_senha VARCHAR(30) NOT NULL
+   academia_nome VARCHAR(30) NOT NULL,
+   academia_cnpj VARCHAR(15) PRIMARY KEY,
+   academia_email VARCHAR(50) NOT NULL,
+   academia_senha VARCHAR(30) NOT NULL
  );
- CREATE TABLE Alunon(
+
+CREATE TABLE Treino(
+   treino_nome VARCHAR(30) NOT NULL,
+   treino_id VARCHAR(5) PRIMARY KEY,
+   treino_descricao VARCHAR(100) NOT NULL,
+   treino_tipo VARCHAR(30) NOT NULL,
+   treino_academia VARCHAR(30) NOT NULL,
+   FOREIGN KEY(treino_academia) REFERENCES Academia(academia_cnpj)
+ );
+
+CREATE TABLE Aluno(
    aluno_nome VARCHAR(30) NOT NULL,
-    aluno_id VARCHAR(5)  PRIMARY KEY,
-    aluno_descricao VARCHAR(100)  NOT NULL,
-    aluno_senha VARCHAR(30) NOT NULL
+   aluno_id VARCHAR(5) PRIMARY KEY,
+   aluno_email VARCHAR(100) NOT NULL,
+   aluno_senha VARCHAR(30) NOT NULL,
+   aluno_academia VARCHAR(30) NOT NULL,
+   aluno_treino VARCHAR(30) NOT NULL,
+   FOREIGN KEY(aluno_academia) REFERENCES Academia(academia_cnpj),
+   FOREIGN KEY(aluno_treino) REFERENCES Treino(treino_id)
  );
- CREATE TABLE Treino(
-    treino_nome VARCHAR(30) NOT NULL,
-    treinoo_id VARCHAR(5)  PRIMARY KEY,
-    treino_descricao VARCHAR(100)  NOT NULL,
-    treino_tipo VARCHAR(30) NOT NULL
+
+CREATE TABLE Personal(
+   personal_nome VARCHAR(30) NOT NULL,
+   personal_id VARCHAR(5) PRIMARY KEY,
+   personal_email VARCHAR(100) NOT NULL,
+   personal_treino VARCHAR(30) NOT NULL,
+   personal_academia VARCHAR(30) NOT NULL,
+   FOREIGN KEY(personal_academia) REFERENCES Academia(academia_cnpj)
  );
- 
