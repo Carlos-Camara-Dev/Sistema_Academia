@@ -18,14 +18,14 @@ h2 {
   border: 0.2rem solid #424242;
   /* width: 15.5rem; */
 }
-#cadastrar_adm,
+#cadastrar_personal,
 #cadastrar_aluno,
 #cadastrar_treino {
   display: none;
   margin: 1rem;
 }
 
-#cadastrar_adm form,
+#cadastrar_personal form,
 #cadastrar_aluno form,
 #cadastrar_treino form {
   background: #dcdcdc;
@@ -38,7 +38,7 @@ h2 {
   width: 23rem;
 }
 
-#cadastrar_adm form input,
+#cadastrar_personal form input,
 #cadastrar_aluno form input,
 #cadastrar_treino form input {
   border: 0.15rem solid #a2a2a2;
@@ -47,7 +47,7 @@ h2 {
   font-size: 1.1rem;
   padding: 1.1rem 2.3rem;
 }
-#gerenciar_adms,
+#gerenciar_personais,
 #gerenciar_alunos,
 #gerenciar_treinos {
   align-items: center;
@@ -75,27 +75,27 @@ h2 {
   margin: 0;
   width: 100%;
 }
-#gerenciar_adms nav,
+#gerenciar_personais nav,
 #gerenciar_alunos nav,
 #gerenciar_treinos nav {
   text-align: end;
   width: 78vw;
 }
-#gerenciar_adms nav button,
+#gerenciar_personais nav button,
 #gerenciar_alunos nav button,
 #gerenciar_nav_bar_sair button,
 #gerenciar_nav_bar_visualizar button,
 #gerenciar_treinos button {
   border: 0.2rem solid #000000;
   background: #e70505;
-  border-radius: 0.7rem;
+  border-radius: 0.9rem;
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin: 0.7rem;
   text-decoration: none;
-  padding: 0.4rem 1.7rem;
+  padding: 0.5rem 1.9rem;
 }
-#gerenciar_adms nav button:hover,
+#gerenciar_personais nav button:hover,
 #gerenciar_alunos nav button:hover,
 #gerenciar_nav_bar_sair button:hover,
 #gerenciar_nav_bar_visualizar button:hover,
@@ -111,7 +111,7 @@ h2 {
   display: flex;
   width: 90vw;
 }
-#gerenciar_adms_lista,
+#gerenciar_personais_lista,
 #gerenciar_alunos_lista,
 #gerenciar_treinos_lista {
   border: 0.1rem solid #000000;
@@ -120,7 +120,7 @@ h2 {
   text-align: center;
 }
 /* Classes: */
-.adm_informacao,
+.personal_informacao,
 .aluno_informacao,
 .treino_informacao {
   border: 0.2rem solid #000000;

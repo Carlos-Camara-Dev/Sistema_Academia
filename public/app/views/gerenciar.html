@@ -16,7 +16,7 @@
     <header>
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
-                <button onclick="abrir_gerenciar_adms()"> Personais </button>
+                <button onclick="abrir_gerenciar_personais()"> Personais </button>
                 <button onclick="abrir_gerenciar_alunos()"> Usuarios</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
             </div>
@@ -29,42 +29,42 @@
     </header>
     <main id="gerenciar_main">
         <!-- Gerenciar Adm's -->
-        <section id="gerenciar_adms">
+        <section id="gerenciar_personais">
             <nav>
-                <button onclick="abrir_cadastrar_adm()"> Cadastrar Personal </button>
-                <button onclick="abrir_gerenciar_adms_lista()"> Gerenciar Personal</button>
+                <button onclick="abrir_cadastrar_personal()"> Cadastrar Personal </button>
+                <button onclick="abrir_gerenciar_personais_lista()"> Gerenciar Personal</button>
             </nav>
             <!-- Lista de Adm's -->
-            <section id="gerenciar_adms_lista">
+            <section id="gerenciar_personais_lista">
                 <h2>Gerenciar Personal</h2>
-                <div class="adm_informacao">
+                <div class="personal_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="adm_informacao">
+                <div class="personal_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="adm_informacao">
+                <div class="personal_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="adm_informacao">
+                <div class="personal_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="adm_informacao">
+                <div class="personal_informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
             </section>
             <!-- Cadastrar Adm -->
-            <section id="cadastrar_adm">
+            <section id="cadastrar_personal">
                 <form action="app/classes/verificar.php?operacao=personal" method=" post">
                     <h2>CADASTRAR PERSONAL </h2>
                     <input type="text" name="personal_nome" placeholder="Digite o nome do personal" required>
