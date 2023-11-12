@@ -5,15 +5,17 @@ class Personal
 {
     private $nome;
     private $id;
-    private $senha;
     private $email;
-    public function __construct($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao)
-    {
+    private $senha;
+    private Academia $academia;
 
+    public function __construct($personal_nome, $personal_id, $personal_email, $personal_senha, $personal_academia, $conexao)
+    {
         $this->set_nome($personal_nome);
         $this->set_id($personal_id);
-        $this->set_senha($personal_senha);
         $this->set_email($personal_email);
+        $this->set_senha($personal_senha);
+        $this->set_academia($personal_academia);
     }
     public function get_nome()
     {
@@ -31,14 +33,6 @@ class Personal
     {
         $this->id = $id;
     }
-    public function get_senha()
-    {
-        return $this->senha;
-    }
-    public function set_senha($senha)
-    {
-        $this->senha = $senha;
-    }
     public function get_email()
     {
         return $this->email;
@@ -47,12 +41,28 @@ class Personal
     {
         $this->email = $email;
     }
-
-    public function personal_cadastrar($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao)
+    public function get_senha()
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO personal(personal_nome, personal_id, personal_email, personal_senha) VALUES('$personal_nome', '$personal_id','$personal_email','$personal_senha')");
+        return $this->senha;
+    }
+    public function set_senha($senha)
+    {
+        $this->senha = $senha;
+    }
+    public function get_academia()
+    {
+        return $this->academia;
+    }
+    public function set_academia($academia)
+    {
+        $this->academia = $academia;
+    }
+
+    public function personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $personal_academia, $conexao)
+    {
+        $cadastrar_personal = $conexao->query("INSERT INTO Personal(personal_nome, personal_id, personal_email, personal_senha, personal_academia) VALUES('$personal_nome', '$personal_id','$personal_email', '$personal_senha', $personal_academia')");
         echo '<script  type="text/javascript">
-                alert("A $personal_nome foi criada. Seja bem-vindo!");
+                alert("A conta do $personal_nome foi criada.");
                 </script>';
         header('Location: ../views/gerenciar.html');
     }

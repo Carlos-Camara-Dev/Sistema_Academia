@@ -3,17 +3,20 @@ class Aluno
 {
     private $nome;
     private $id;
-    private $pagamento_dia;
     private $email;
+    private $senha;
+    private $pagamento_dia;
     private Academia $academia;
     private Treino $treino;
-    public function __construct($aluno_nome, $aluno_id, $aluno_pagamento_dia, $alunol_email, $conexao)
+    public function __construct($aluno_nome, $aluno_id, $alunol_email, $aluno_senha, $aluno_pagamento_dia, $aluno_academia, $conexao)
     {
 
         $this->set_nome($aluno_nome);
         $this->set_id($aluno_id);
-        $this->set_pagamento_dia($aluno_pagamento_dia);
+        $this->set_senha($aluno_senha);
         $this->set_email($alunol_email);
+        $this->set_pagamento_dia($aluno_pagamento_dia);
+        $this->set_academia($aluno_academia);
     }
     public function get_nome()
     {
@@ -31,14 +34,6 @@ class Aluno
     {
         $this->id = $id;
     }
-    public function get_pagamento_dia()
-    {
-        return $this->pagamento_dia;
-    }
-    public function set_pagamento_dia($pagamento_dia)
-    {
-        $this->pagamento_dia = $pagamento_dia;
-    }
     public function get_email()
     {
         return $this->email;
@@ -47,12 +42,36 @@ class Aluno
     {
         $this->email = $email;
     }
-
-    public function aluno_cadastrar($aluno_nome, $aluno_id, $aluno_pagamento_dia, $aluno_email, $conexao)
+    public function get_senha()
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_pagamento_dia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_pagamento_dia')");
+        return $this->senha;
+    }
+    public function set_senha($senha)
+    {
+        $this->senha = $senha;
+    }
+    public function get_pagamento_dia()
+    {
+        return $this->pagamento_dia;
+    }
+    public function set_pagamento_dia($pagamento_dia)
+    {
+        $this->pagamento_dia = $pagamento_dia;
+    }
+    public function get_academia()
+    {
+        return $this->academia;
+    }
+    public function set_academia($academia)
+    {
+        $this->academia = $academia;
+    }
+
+    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_pagamento_dia, $aluno_academia, $conexao)
+    {
+        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha,aluno_pagamento_dia, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha','$aluno_pagamento_dia', '$aluno_academia')");
         echo '<script  type="text/javascript">
-                alert("A $aluno_nome foi criada. Seja bem-vindo!");
+                alert("O $aluno_nome foi criado.");
                 </script>';
         header('Location: ../views/gerenciar.html');
     }

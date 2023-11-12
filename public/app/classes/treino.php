@@ -7,13 +7,15 @@ class Treino
     private $id;
     private $descricao;
     private $tipo;
-    public function __construct($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexao)
+    private Academia $academia;
+    public function __construct($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $treino_academia, $conexao)
     {
 
         $this->set_nome($treino_nome);
         $this->set_id($treino_id);
         $this->set_descricao($treino_descricao);
         $this->set_tipo($treino_tipo);
+        $this->set_academia($treino_academia);
     }
     public function get_nome()
     {
@@ -47,16 +49,28 @@ class Treino
     {
         $this->tipo = $tipo;
     }
-
-    public function treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexao)
+    public function get_academia()
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO personal(treino_nome, treino_id, treino_tipo, treino_descricao) VALUES('$treino_nome', '$treino_id','$treino_tipo','$treino_descricao')");
+        return $this->academia;
+    }
+    public function set_academia($academia)
+    {
+        $this->academia = $academia;
+    }
+
+    public function treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $treino_academia, $conexao)
+    {
+        $cadastrar_personal = $conexao->query("INSERT INTO personal(treino_nome, treino_id, treino_tipo, treino_descricao, treino_academia) VALUES('$treino_nome', '$treino_id','$treino_tipo','$treino_descricao', '$treino_academia')");
         echo '<script  type="text/javascript">
-                alert("A $treino_nome foi criada. Seja bem-vindo!");
+                alert("A $treino_nome foi criada. ");
                 </script>';
         header('Location: ../views/gerenciar.html');
     }
     public function buscar_dados()
     {
+        // $dados = $comando->fetch(PDO::FETCH_ASSOC);
+        // $this->setTreino($dados['treino']);
+        // $this->setDescricao($dados['descicao']);
+        // echo '<p>' . 'treino: ' . $dados['treino'] . '</p>';
     }
 }

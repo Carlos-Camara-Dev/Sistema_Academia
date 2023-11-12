@@ -4,8 +4,11 @@ require_once("../classes/academia.php");
 require_once("../classes/aluno.php");
 require_once("../classes/personal.php");
 require_once("../classes/treino.php");
-$operacao = $_GET['operacao'];
 
+session_start();
+$usuario_id = $_SESSION['usuario_id'];
+$operacao = $_GET['operacao'];
+// $contador = 0;
 
 // Dados da Academia:
 if (isset($_POST['academia_nome'])) {
@@ -19,8 +22,9 @@ if (isset($_POST['academia_nome'])) {
 if (isset($_POST['aluno_nome'])) {
     $aluno_nome = $_POST['aluno_nome'];
     $aluno_id = $_POST['aluno_id'];
-    // $aluno_senha = $_POST['aluno_senha'];
     $aluno_email = $_POST['aluno_email'];
+    $aluno_senha = $_POST['aluno_senha'];
+    $aluno_pagar_dia = $_POST['aluno_pagar_dia'];
 }
 // Dados dos Personal:
 if (isset($_POST['personal_nome'])) {
@@ -36,14 +40,15 @@ if (isset($_POST['treino_nome'])) {
     $treino_descricao = $_POST['treino_descricao'];
     $treino_tipo = $_POST['treino_tipo'];
 }
-// Verificar Academia:
 
 switch ($operacao) {
+        // Verificar Academia:
     case 'academia':
 
         $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj= '$academia_cnpj' AND academia_senha='$academia_senha'");
+        $contador = $verificar_aluno_id->rowCount();
 
-        if ($verificar_cnpj->rowCount() > 0) {
+        if ($contador > 0) {
             echo '<script  type="text/javascript">' .
                 "alert('O $academia_cnpj já foi cadastrado!');" .
                 'window.history.back();
@@ -53,48 +58,52 @@ switch ($operacao) {
             $academia->academia_cadastrar($academia_nome, $academia_cnpj, $academia_senha, $academia_email, $conexao);
         }
         break;
+        // Verificar Aluno:
     case 'aluno':
 
-        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_nome='$aluno_nome'");
+        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_senha='$aluno_senha'");
+        $contador = $verificar_aluno_id->rowCount();
 
-        if ($verificar_aluno_id->rowCount() > 0) {
+        if ($contador > 0) {
             echo '<script  type="text/javascript">' .
                 "alert('O $aluno_id já foi cadastrado!');" .
                 'window.history.back();
                 </script>';
         } else {
-            $aluno = new Aluno($aluno_nome, $aluno_id, $aluno_pagamento_dia, $aluno_email, $conexao);
-            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_pagamento_dia, $aluno_email, $conexao);
+            $aluno = new Aluno($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_pagamento_dia, $usuario_id, $conexao);
+            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_pagamento_dia, $usuario_id, $conexao);
         }
         break;
+        // Verificar Personal:
     case 'personal':
         $verificar_personal_id = $conexao->query("SELECT * FROM Personal WHERE personal_id= '$personal_id' AND personal_senha='$personal_senha'");
+        $contador = $verificar_aluno_id->rowCount();
 
-        if ($verificar_personal_id->rowCount() > 0) {
-
+        if ($contador > 0) {
             echo '<script  type="text/javascript">' .
                 "alert('O $personal_id já foi cadastrado!');" .
                 'window.history.back();
                 </script>';
         } else {
-            $personal = new Personal($personal_nome, $personal_id, $personal_senha, $personal_email, $conexao);
-            $personal->personal_cadastrar($personal_nome, $personal_id, $personal_senha, $personal_email, $conexa);
+            $personal = new Personal($personal_nome, $personal_id,  $personal_email, $personal_senha, $usuario_id, $conexao);
+            $personal->personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $usuario_id, $conexa);
         }
 
 
         break;
     case 'treino':
         $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_id='$treino_id'");
+        $contador = $verificar_aluno_id->rowCount();
 
-        if ($verificar_treino_id->rowCount() > 0) {
+        if ($contador > 0) {
 
             echo '<script  type="text/javascript">' .
                 "alert('O $treino_nome já foi cadastrado!');" .
                 'window.history.back();
                     </script>';
         } else {
-            $treino = new Treino($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexao);
-            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexa);
+            // $treino = new Treino($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexao);
+            // $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexa);
         }
 
 

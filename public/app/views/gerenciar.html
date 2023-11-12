@@ -1,5 +1,13 @@
 <!-- <php?
+ session_start();
 
+ if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['id']) == true)) {
+     header('location: home.html');
+ } else {
+     $usuario = $_SESSION['usuario'];
+     $usuario_id= $_SESSION['usuario_id'];
+ session_destroy();
+ }
 ?>-->
 
 <html lang="en">
@@ -118,6 +126,7 @@
                     <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
+                    <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
                     <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required>
                     <!-- <div id="aluno_treino_tipo">
                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" size="50">
