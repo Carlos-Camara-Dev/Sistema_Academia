@@ -9,6 +9,18 @@ body {
 h2 {
   font-size: 1.7rem;
 }
+/* #aluno_treino_tipo {
+  text-align: left;
+  width: 19rem;
+}
+#aluno_treino_tipo input {
+  border: 0.15rem solid #a2a2a2;
+  height: 1.3em;
+  width: 1.3rem;
+}
+#aluno_treino_tipo label {
+  font-size: 1.5rem;
+} */
 #button_enty {
   box-shadow: #272727 0.25rem 0.3rem 0.45rem;
   width: 15.5rem;
@@ -24,15 +36,16 @@ h2 {
   display: none;
   margin: 1rem;
 }
-
 #cadastrar_personal form,
 #cadastrar_aluno form,
 #cadastrar_treino form {
+  align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
   border-radius: 0.7rem;
   box-shadow: #272727 0.25rem 0.35rem 0.85rem;
-  height: 33.5em;
+  display: flex;
+  flex-direction: column;
   margin: auto auto;
   text-align: center;
   width: 23rem;
