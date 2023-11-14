@@ -5,9 +5,15 @@ require_once("../classes/aluno.php");
 require_once("../classes/personal.php");
 require_once("../classes/treino.php");
 
+
 session_start();
-$usuario_id = $_SESSION['usuario_id'];
+// Verifica permissao:
+if (isset($_SESSION['usuario_id'])) {
+
+    $usuario_id = $_SESSION['usuario_id'];
+}
 $operacao = $_GET['operacao'];
+
 // $contador = 0;
 
 // Dados da Academia:
@@ -46,7 +52,7 @@ switch ($operacao) {
     case 'academia':
 
         $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj= '$academia_cnpj' AND academia_senha='$academia_senha'");
-        $contador = $verificar_aluno_id->rowCount();
+        $contador = $verificar_cnpj->rowCount();
 
         if ($contador > 0) {
             echo '<script  type="text/javascript">' .
@@ -102,11 +108,13 @@ switch ($operacao) {
                 'window.history.back();
                     </script>';
         } else {
-            // $treino = new Treino($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexao);
-            // $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $conexa);
+            $treino = new Treino($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexao);
+            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexa);
         }
 
-
+    case 'destroy':
+        session_destroy();
+        header('Location: home.html');
         break;
     default:
         # code...

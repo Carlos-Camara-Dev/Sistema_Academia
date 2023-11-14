@@ -1,14 +1,14 @@
-<!-- <php?
- session_start();
-
- if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['id']) == true)) {
-     header('location: home.html');
- } else {
-     $usuario = $_SESSION['usuario'];
-     $usuario_id= $_SESSION['usuario_id'];
- session_destroy();
- }
-?>-->
+<!-- <?php
+        session_start();
+        if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_id']) == true)) {
+            header('location: home.html');
+        } else {
+            $usuario = $_SESSION['usuario_nome'];
+            $usuario_id = $_SESSION['usuario_id'];
+            $usuario_permicao = $_SESSION['permicao'];
+            session_destroy();
+        }
+        ?> -->
 
 <html lang="en">
 
@@ -29,9 +29,7 @@
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
             </div>
             <div id="gerenciar_nav_bar_sair">
-                <button>
-                    <!-- <?php ?> -->
-                    Sair </button>
+                <button> Sair</button>
             </div>
         </nav>
     </header>
@@ -176,7 +174,7 @@
                 </div>
             </section>
             <section id="cadastrar_treino">
-                <form action="app/classes/treino.php" method=" post">
+                <form action="../function/verificar.php?operacao=treino" method=" post">
                     <h2>CADASTRAR TREINO </h2>
                     <input type="text" name="treino_nome" placeholder="Digite o nome do treino" required>
                     <input type="text" name="treino_id" placeholder="Digite o id do treino" required>

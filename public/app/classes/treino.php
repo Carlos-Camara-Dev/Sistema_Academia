@@ -10,7 +10,6 @@ class Treino
     private Academia $academia;
     public function __construct($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $treino_academia, $conexao)
     {
-
         $this->set_nome($treino_nome);
         $this->set_id($treino_id);
         $this->set_descricao($treino_descricao);
@@ -66,11 +65,20 @@ class Treino
                 </script>';
         header('Location: ../views/gerenciar.html');
     }
-    public function buscar_dados()
+    public function buscar_dados($conexao)
     {
-        // $dados = $comando->fetch(PDO::FETCH_ASSOC);
-        // $this->setTreino($dados['treino']);
-        // $this->setDescricao($dados['descicao']);
-        // echo '<p>' . 'treino: ' . $dados['treino'] . '</p>';
+        $comando = $conexao->query("SELECT * FROM Treino ORDER BY treino_nome DESC");
+
+        $contador = $comando->fetch(PDO::FETCH_ASSOC);
+        if ($contador->num_rows > 0) {
+            echo "<table><tr><th>Treino ID</th><th>Treino Nome</th><th>Treino Descricao</th><th>Treino Tipo</th></tr>";
+            // output data of each row
+            while ($dados = $contador->fetch_assoc()) {
+                echo "<tr><td>" . $dados["treino_id"] . "</td><td>" . $dados["treino_nome"] . " " . $dados["treino_decricao"] . "</td><td>" . $dados["treino_tipo"] . "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "0 results";
+        }
     }
 }
