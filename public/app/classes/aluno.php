@@ -70,16 +70,16 @@ class Aluno
     public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_pagamento_dia, $aluno_academia, $conexao)
     {
         $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha,aluno_pagamento_dia, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha','$aluno_pagamento_dia', '$aluno_academia')");
-        echo '<script  type="text/javascript">
-                alert("O $aluno_nome foi criado.");
-                </script>';
+        echo '<script  type="text/javascript">' .
+            "alert('O aluno $aluno_nome com o id $aluno_id foi criado.');" .
+            '</script>';
         header('Location: ../views/gerenciar.html');
     }
-    public function buscar_dados($aluno_nome, $conexao)
+    public function buscar_dados($aluno_academia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Treino WHERE treino_academia = '$aluno_nome' ORDER BY treino_nome DESC");
+        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia' ORDER BY aluno_nome DESC");
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
-            echo '<div class="treino_informacao">' .
+            echo '<div class="informacao">' .
                 '<table>' .
                 '<tr>
                 <th>Aluno ID</th>

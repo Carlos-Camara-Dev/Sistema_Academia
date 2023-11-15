@@ -60,27 +60,27 @@ require_once("../classes/treino.php");
             <!-- Lista de Adm's -->
             <section id="gerenciar_personais_lista">
                 <h2>Gerenciar Personal</h2>
-                <div class="personal_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="personal_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="personal_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="personal_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="personal_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
@@ -108,27 +108,27 @@ require_once("../classes/treino.php");
             <!-- Lista de Alunos -->
             <section id="gerenciar_alunos_lista">
                 <h2>Gerenciar Alunos</h2>
-                <div class="aluno_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="aluno_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="aluno_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="aluno_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as
                 </div>
-                <div class="aluno_informacao">
+                <div class="informacao">
                     feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
                     doming
                     id quod mazim placerat facer possim as

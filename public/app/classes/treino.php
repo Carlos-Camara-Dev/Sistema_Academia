@@ -69,7 +69,7 @@ class Treino
     {
         $comando = $conexao->query("SELECT * FROM Treino WHERE treino_academia = '$treino_academia' ORDER BY treino_nome DESC");
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
-            echo '<div class="treino_informacao">' .
+            echo '<div class="informacao">' .
                 '<table>' .
                 '<tr>
                 <th>Treino ID</th>

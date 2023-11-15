@@ -133,9 +133,7 @@ h2 {
   text-align: center;
 }
 /* Classes: */
-.personal_informacao,
-.aluno_informacao,
-.treino_informacao {
+.informacao {
   align-items: center;
   /* border: 0.1rem solid #000000; */
   display: flex;
@@ -143,16 +141,16 @@ h2 {
   margin: 1rem;
   width: 70vw;
 }
-.treino_informacao table,
-.treino_informacao th,
-.treino_informacao td {
+.informacao table,
+.informacao th,
+.informacao td {
   border: 0.15rem solid #000000;
   border-collapse: collapse;
   margin: 0;
   font-size: 1.7rem;
 }
-.treino_informacao th,
-.treino_informacao td {
+.informacao th,
+.informacao td {
   padding: 1rem;
   text-align: center;
 }

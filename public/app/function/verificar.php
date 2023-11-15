@@ -90,7 +90,7 @@ switch ($operacao) {
                 'window.history.back();
                 </script>';
         } else {
-            $personal = new Personal($personal_nome, $personal_id,  $personal_email, $personal_senha, $usuario_id, $conexao);
+            $personal = new Personal($conexao);
             $personal->personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $usuario_id, $conexa);
         }
 
