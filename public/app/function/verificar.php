@@ -75,7 +75,7 @@ switch ($operacao) {
                 'window.history.back();
                 </script>';
         } else {
-            $aluno = new Aluno($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_pagamento_dia, $usuario_id, $conexao);
+            $aluno = new Aluno($conexao);
             $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_pagamento_dia, $usuario_id, $conexao);
         }
         break;

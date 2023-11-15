@@ -6,17 +6,17 @@ class Aluno
     private $email;
     private $senha;
     private $pagamento_dia;
-    private Academia $academia;
-    private Treino $treino;
-    public function __construct($aluno_nome, $aluno_id, $alunol_email, $aluno_senha, $aluno_pagamento_dia, $aluno_academia, $conexao)
+    private $academia;
+    private $treino;
+    public function __construct($conexao)
     {
 
-        $this->set_nome($aluno_nome);
-        $this->set_id($aluno_id);
-        $this->set_senha($aluno_senha);
-        $this->set_email($alunol_email);
-        $this->set_pagamento_dia($aluno_pagamento_dia);
-        $this->set_academia($aluno_academia);
+        // $this->set_nome($aluno_nome);
+        // $this->set_id($aluno_id);
+        // $this->set_senha($aluno_senha);
+        // $this->set_email($alunol_email);
+        // $this->set_pagamento_dia($aluno_pagamento_dia);
+        // $this->set_academia($aluno_academia);
     }
     public function get_nome()
     {
@@ -75,7 +75,27 @@ class Aluno
                 </script>';
         header('Location: ../views/gerenciar.html');
     }
-    public function buscar_dados()
+    public function buscar_dados($aluno_nome, $conexao)
     {
+        $comando = $conexao->query("SELECT * FROM Treino WHERE treino_academia = '$aluno_nome' ORDER BY treino_nome DESC");
+        while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+            echo '<div class="treino_informacao">' .
+                '<table>' .
+                '<tr>
+                <th>Aluno ID</th>
+                <th>Aluno Nome</th>
+                <th>Aluno Email</th>
+                <th>Aluno Dia Pagamento</th>
+                <th>Aluno Treino</th>
+                </tr>
+                <tr>
+                <td>' . $dados["aluno_id"] . "</td>
+                <td>" . $dados["aluno_nome"] . "</td>
+                <td>" . $dados["aluno_pagamento_dia"] . "</td>
+                <td>" . $dados["aluno_treino"] . "</td>
+                </tr>
+                </table>
+                </div>";
+        }
     }
 }

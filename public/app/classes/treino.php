@@ -68,7 +68,6 @@ class Treino
     public function buscar_dados($treino_academia, $conexao)
     {
         $comando = $conexao->query("SELECT * FROM Treino WHERE treino_academia = '$treino_academia' ORDER BY treino_nome DESC");
-        echo 'AII';
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="treino_informacao">' .
                 '<table>' .

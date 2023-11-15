@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_id']) == true)) {
     header('location: home.html');
 } else {
@@ -7,6 +9,7 @@ if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_i
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_permicao = $_SESSION['permicao'];
     // session_destroy();
+    echo  $usuario;
 }
 
 ?>
