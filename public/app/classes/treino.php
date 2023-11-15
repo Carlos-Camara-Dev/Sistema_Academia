@@ -7,14 +7,14 @@ class Treino
     private $id;
     private $descricao;
     private $tipo;
-    private Academia $academia;
-    public function __construct($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $treino_academia, $conexao)
+    private $academia;
+    public function __construct($conexao)
     {
-        $this->set_nome($treino_nome);
-        $this->set_id($treino_id);
-        $this->set_descricao($treino_descricao);
-        $this->set_tipo($treino_tipo);
-        $this->set_academia($treino_academia);
+        // $this->set_nome($treino_nome);
+        // $this->set_id($treino_id);
+        // $this->set_descricao($treino_descricao);
+        // $this->set_tipo($treino_tipo);
+        // $this->set_academia($treino_academia);
     }
     public function get_nome()
     {
@@ -59,26 +59,33 @@ class Treino
 
     public function treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $treino_academia, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO personal(treino_nome, treino_id, treino_tipo, treino_descricao, treino_academia) VALUES('$treino_nome', '$treino_id','$treino_tipo','$treino_descricao', '$treino_academia')");
-        echo '<script  type="text/javascript">
-                alert("A $treino_nome foi criada. ");
+        $cadastrar_personal = $conexao->query("INSERT INTO Treino(treino_nome, treino_id, treino_tipo, treino_descricao, treino_academia) VALUES('$treino_nome', '$treino_id','$treino_tipo','$treino_descricao', '$treino_academia')");
+        echo '<script  type="text/javascript">' .
+            "alert('O treino de $treino_nome com $treino_id foi criado. ');
+                window.history.back();" . '
                 </script>';
-        header('Location: ../views/gerenciar.html');
     }
-    public function buscar_dados($conexao)
+    public function buscar_dados($treino_academia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Treino ORDER BY treino_nome DESC");
-
-        $contador = $comando->fetch(PDO::FETCH_ASSOC);
-        if ($contador->num_rows > 0) {
-            echo "<table><tr><th>Treino ID</th><th>Treino Nome</th><th>Treino Descricao</th><th>Treino Tipo</th></tr>";
-            // output data of each row
-            while ($dados = $contador->fetch_assoc()) {
-                echo "<tr><td>" . $dados["treino_id"] . "</td><td>" . $dados["treino_nome"] . " " . $dados["treino_decricao"] . "</td><td>" . $dados["treino_tipo"] . "</td></tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "0 results";
+        $comando = $conexao->query("SELECT * FROM Treino WHERE treino_academia = '$treino_academia' ORDER BY treino_nome DESC");
+        echo 'AII';
+        while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+            echo '<div class="treino_informacao">' .
+                '<table>' .
+                '<tr>
+                <th>Treino ID</th>
+                <th>Treino Nome</th>
+                <th>Treino Descricao</th>
+                <th>Treino Tipo</th>
+                </tr>
+                <tr>
+                <td>' . $dados["treino_id"] . "</td>
+                <td>" . $dados["treino_nome"] . "</td>
+                <td>" . $dados["treino_descricao"] . "</td>
+                <td>" . $dados["treino_tipo"] . "</td>
+                </tr>
+                </table>
+                </div>";
         }
     }
 }

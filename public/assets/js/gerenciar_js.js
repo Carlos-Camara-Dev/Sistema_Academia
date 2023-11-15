@@ -88,4 +88,7 @@ function abrir_gerenciar_treino() {
             gerenciar_treinos_lista.style.display = "none";
         }
     }
+
+} function location_reload() {
+    location.reload();
 }

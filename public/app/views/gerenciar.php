@@ -1,15 +1,24 @@
-<!-- <?php
-        session_start();
-        if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_id']) == true)) {
-            header('location: home.html');
-        } else {
-            $usuario = $_SESSION['usuario_nome'];
-            $usuario_id = $_SESSION['usuario_id'];
-            $usuario_permicao = $_SESSION['permicao'];
-            session_destroy();
-        }
-        ?> -->
+<?php
+session_start();
+if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_id']) == true)) {
+    header('location: home.html');
+} else {
+    $usuario = $_SESSION['usuario_nome'];
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_permicao = $_SESSION['permicao'];
+    // session_destroy();
+}
 
+?>
+<?php
+
+require_once("../models/banco_conexao.php");
+require_once("../classes/academia.php");
+require_once("../classes/aluno.php");
+require_once("../classes/personal.php");
+require_once("../classes/treino.php");
+
+?>
 <html lang="en">
 
 <head>
@@ -28,15 +37,20 @@
                 <button onclick="abrir_gerenciar_alunos()"> Usuarios</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
             </div>
-            <div id="gerenciar_nav_bar_sair">
-                <button> Sair</button>
-            </div>
+            <!-- <div id="gerenciar_nav_bar_sair">
+                <button onclick="location_reload()"> Sair</button>
+            </div> -->
         </nav>
     </header>
     <main id="gerenciar_main">
         <!-- Gerenciar Adm's -->
         <section id="gerenciar_personais">
             <nav>
+                <button>
+                    <?php
+                    echo $usuario;
+                    ?>
+                </button>
                 <button onclick="abrir_cadastrar_personal()"> Cadastrar Personal </button>
                 <button onclick="abrir_gerenciar_personais_lista()"> Gerenciar Personal</button>
             </nav>
@@ -141,40 +155,18 @@
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
             <nav>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button
-                    onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
             </nav>
             <!-- Lista de Treinos -->
             <section id="gerenciar_treinos_lista">
                 <h2>Gerenciar Treinos</h2>
-                <div class="treino_informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="treino_informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="treino_informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="treino_informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="treino_informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
+                <?php
+                $treino = new Treino($conexao);
+                $treino->buscar_dados($usuario_id, $conexao);
+                ?>
             </section>
             <section id="cadastrar_treino">
-                <form action="../function/verificar.php?operacao=treino" method=" post">
+                <form action="../function/verificar.php?operacao=treino" method="post">
                     <h2>CADASTRAR TREINO </h2>
                     <input type="text" name="treino_nome" placeholder="Digite o nome do treino" required>
                     <input type="text" name="treino_id" placeholder="Digite o id do treino" required>

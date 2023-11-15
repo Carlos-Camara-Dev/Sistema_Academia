@@ -9,7 +9,6 @@ require_once("../classes/treino.php");
 session_start();
 // Verifica permissao:
 if (isset($_SESSION['usuario_id'])) {
-
     $usuario_id = $_SESSION['usuario_id'];
 }
 $operacao = $_GET['operacao'];
@@ -83,7 +82,7 @@ switch ($operacao) {
         // Verificar Personal:
     case 'personal':
         $verificar_personal_id = $conexao->query("SELECT * FROM Personal WHERE personal_id= '$personal_id' AND personal_senha='$personal_senha'");
-        $contador = $verificar_aluno_id->rowCount();
+        $contador = $verificar_personal_id->rowCount();
 
         if ($contador > 0) {
             echo '<script  type="text/javascript">' .
@@ -99,19 +98,18 @@ switch ($operacao) {
         break;
     case 'treino':
         $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_id='$treino_id'");
-        $contador = $verificar_aluno_id->rowCount();
+        $contador = $verificar_treino_id->rowCount();
 
         if ($contador > 0) {
-
             echo '<script  type="text/javascript">' .
-                "alert('O $treino_nome já foi cadastrado!');" .
+                "alert('O treino de $treino_nome com $treino_id já foi cadastrado!');" .
                 'window.history.back();
                     </script>';
         } else {
-            $treino = new Treino($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexao);
-            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexa);
+            $treino = new Treino($conexao);
+            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexao);
         }
-
+        break;
     case 'destroy':
         session_destroy();
         header('Location: home.html');
