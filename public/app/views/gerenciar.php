@@ -9,7 +9,7 @@ if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_i
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_permicao = $_SESSION['permicao'];
     // session_destroy();
-    echo  $usuario;
+
 }
 
 ?>
@@ -36,57 +36,37 @@ require_once("../classes/treino.php");
     <header>
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
-                <button onclick="abrir_gerenciar_personais()"> Personais </button>
-                <button onclick="abrir_gerenciar_alunos()"> Usuarios</button>
+                <?php
+                if ($usuario_permicao == "academia") {
+                    echo '<button onclick="abrir_gerenciar_personais()"> Personais </button>';
+                }
+                ?>
+                <button onclick="abrir_gerenciar_alunos()"> Aluno</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
             </div>
-            <!-- <div id="gerenciar_nav_bar_sair">
-                <button onclick="location_reload()"> Sair</button>
-            </div> -->
+            <div id="gerenciar_nav_bar_sair">
+                <button>
+                    <a href="../function/verificar.php?operacao=destroy">Sair</a>
+                </button>
+            </div>
         </nav>
     </header>
     <main id="gerenciar_main">
-        <!-- Gerenciar Adm's -->
+        <!-- Gerenciar Personais -->
         <section id="gerenciar_personais">
             <nav>
-                <button>
-                    <?php
-                    echo $usuario;
-                    ?>
-                </button>
                 <button onclick="abrir_cadastrar_personal()"> Cadastrar Personal </button>
                 <button onclick="abrir_gerenciar_personais_lista()"> Gerenciar Personal</button>
             </nav>
-            <!-- Lista de Adm's -->
+            <!-- Lista de Personal -->
             <section id="gerenciar_personais_lista">
                 <h2>Gerenciar Personal</h2>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
+                <?php
+                $personal = new Personal($conexao);
+                $personal->buscar_dados($usuario_id, $conexao);
+                ?>
             </section>
-            <!-- Cadastrar Adm -->
+            <!-- Cadastrar Personal -->
             <section id="cadastrar_personal">
                 <form action="../function/verificar.php?operacao=personal" method="post">
                     <h2>CADASTRAR PERSONAL </h2>
@@ -142,7 +122,8 @@ require_once("../classes/treino.php");
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
-                    <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required>
+                    <!-- <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required> -->
+                    <input type="text" name="aluno_treino" placeholder="Digite o treino do aluno" required>
                     <!-- <div id="aluno_treino_tipo">
                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" size="50">
                         <label for="vehicle1"> I have a bike</label><br>

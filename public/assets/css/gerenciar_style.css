@@ -1,10 +1,14 @@
 * {
   list-style-type: none;
+  text-decoration: none;
 }
 
 body {
   background: #a2a2a2;
   margin: 0;
+}
+a {
+  color: #ffffff;
 }
 h2 {
   font-size: 1.7rem;

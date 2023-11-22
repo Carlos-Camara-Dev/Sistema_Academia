@@ -60,14 +60,14 @@ class Personal
 
     public function personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $personal_academia, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO Personal(personal_nome, personal_id, personal_email, personal_senha, personal_academia) VALUES('$personal_nome', '$personal_id','$personal_email', '$personal_senha', $personal_academia')");
+        $cadastrar_personal = $conexao->query("INSERT INTO Personal(personal_nome, personal_id, personal_email, personal_senha, personal_academia) VALUES('$personal_nome', '$personal_id',
+        '$personal_email', '$personal_senha', '$personal_academia')");
         echo '<script  type="text/javascript">' .
-            "alert('A conta do $personal_nome com o id $personal_id foi criada.');" . '</script>';
-        header('Location: ../views/gerenciar.html');
+            "alert('A conta do $personal_nome com o id $personal_id foi criada.');" .  'window.history.back();</script>';
     }
     public function buscar_dados($personal_academia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Personal WHERE personal_academia = '$personal_academia' ORDER BY personal_nome DESC");
+        $comando = $conexao->query("SELECT * FROM Personal WHERE personal_academia = '$personal_academia' ORDER BY personal_nome ASC");
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="informacao">' .
                 '<table>' .

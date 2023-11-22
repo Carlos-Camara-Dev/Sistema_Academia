@@ -29,7 +29,8 @@ if (isset($_POST['aluno_nome'])) {
     $aluno_id = $_POST['aluno_id'];
     $aluno_email = $_POST['aluno_email'];
     $aluno_senha = $_POST['aluno_senha'];
-    $aluno_pagar_dia = $_POST['aluno_pagar_dia'];
+    // $aluno_pagar_dia = $_POST['aluno_pagar_dia'];
+    $aluno_treino = $_POST['aluno_treino'];
 }
 // Dados dos Personal:
 if (isset($_POST['personal_nome'])) {
@@ -66,7 +67,7 @@ switch ($operacao) {
         // Verificar Aluno:
     case 'aluno':
 
-        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_senha='$aluno_senha'");
+        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_treino='$aluno_treino'");
         $contador = $verificar_aluno_id->rowCount();
 
         if ($contador > 0) {
@@ -76,28 +77,28 @@ switch ($operacao) {
                 </script>';
         } else {
             $aluno = new Aluno($conexao);
-            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_pagamento_dia, $usuario_id, $conexao);
+            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $usuario_id, $aluno_treino, $conexao);
         }
         break;
         // Verificar Personal:
     case 'personal':
-        $verificar_personal_id = $conexao->query("SELECT * FROM Personal WHERE personal_id= '$personal_id' AND personal_senha='$personal_senha'");
+        $verificar_personal_id = $conexao->query("SELECT * FROM Personal WHERE personal_id='$personal_id'  AND personal_academia='$usuario_id' AND personal_nome='$personal_nome'");
         $contador = $verificar_personal_id->rowCount();
 
         if ($contador > 0) {
             echo '<script  type="text/javascript">' .
-                "alert('O $personal_id já foi cadastrado!');" .
+                "alert('O personal $personal_nome com o id $personal_id já foi cadastrado!');" .
                 'window.history.back();
                 </script>';
         } else {
             $personal = new Personal($conexao);
-            $personal->personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $usuario_id, $conexa);
+            $personal->personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $usuario_id, $conexao);
         }
 
 
         break;
     case 'treino':
-        $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_id='$treino_id'");
+        $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_academia='$usuario_id' AND treino_id='$treino_id'");
         $contador = $verificar_treino_id->rowCount();
 
         if ($contador > 0) {
@@ -112,7 +113,7 @@ switch ($operacao) {
         break;
     case 'destroy':
         session_destroy();
-        header('Location: home.html');
+        header('Location: ../views/home.html');
         break;
     default:
         # code...

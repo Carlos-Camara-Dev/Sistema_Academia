@@ -67,17 +67,17 @@ class Aluno
         $this->academia = $academia;
     }
 
-    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_pagamento_dia, $aluno_academia, $conexao)
+    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_academia, $aluno_treino, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha,aluno_pagamento_dia, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha','$aluno_pagamento_dia', '$aluno_academia')");
+        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha, aluno_academia, aluno_treino) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha', '$aluno_academia', '$aluno_treino')");
         echo '<script  type="text/javascript">' .
             "alert('O aluno $aluno_nome com o id $aluno_id foi criado.');" .
             '</script>';
-        header('Location: ../views/gerenciar.html');
+        header('Location: ../views/gerenciar.php');
     }
     public function buscar_dados($aluno_academia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia' ORDER BY aluno_nome DESC");
+        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia' ORDER BY aluno_nome ASC");
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="informacao">' .
                 '<table>' .
@@ -85,13 +85,11 @@ class Aluno
                 <th>Aluno ID</th>
                 <th>Aluno Nome</th>
                 <th>Aluno Email</th>
-                <th>Aluno Dia Pagamento</th>
                 <th>Aluno Treino</th>
                 </tr>
                 <tr>
                 <td>' . $dados["aluno_id"] . "</td>
                 <td>" . $dados["aluno_nome"] . "</td>
-                <td>" . $dados["aluno_pagamento_dia"] . "</td>
                 <td>" . $dados["aluno_treino"] . "</td>
                 </tr>
                 </table>
