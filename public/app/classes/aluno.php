@@ -7,7 +7,6 @@ class Aluno
     private $senha;
     private $pagamento_dia;
     private $academia;
-    private $treino;
     public function __construct($conexao)
     {
 
@@ -67,13 +66,12 @@ class Aluno
         $this->academia = $academia;
     }
 
-    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_academia, $aluno_treino, $conexao)
+    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_academia, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha, aluno_academia, aluno_treino) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha', '$aluno_academia', '$aluno_treino')");
+        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha', '$aluno_academia')");
         echo '<script  type="text/javascript">' .
             "alert('O aluno $aluno_nome com o id $aluno_id foi criado.');" .
-            '</script>';
-        header('Location: ../views/gerenciar.php');
+            'window.history.back();</script>';
     }
     public function buscar_dados($aluno_academia, $conexao)
     {
@@ -85,12 +83,10 @@ class Aluno
                 <th>Aluno ID</th>
                 <th>Aluno Nome</th>
                 <th>Aluno Email</th>
-                <th>Aluno Treino</th>
                 </tr>
                 <tr>
                 <td>' . $dados["aluno_id"] . "</td>
                 <td>" . $dados["aluno_nome"] . "</td>
-                <td>" . $dados["aluno_treino"] . "</td>
                 </tr>
                 </table>
                 </div>";

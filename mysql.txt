@@ -22,9 +22,7 @@ CREATE TABLE Aluno(
    aluno_email VARCHAR(100) NOT NULL,
    aluno_senha VARCHAR(100) NOT NULL,
    aluno_academia VARCHAR(30) NOT NULL,
-   aluno_treino VARCHAR(30) NOT NULL,
-   FOREIGN KEY(aluno_academia) REFERENCES Academia(academia_cnpj),
-   FOREIGN KEY(aluno_treino) REFERENCES Treino(treino_id)
+   FOREIGN KEY(aluno_academia) REFERENCES Academia(academia_cnpj)
  );
 
 CREATE TABLE Personal(
@@ -35,3 +33,8 @@ CREATE TABLE Personal(
    personal_academia VARCHAR(30) NOT NULL,
    FOREIGN KEY(personal_academia) REFERENCES Academia(academia_cnpj)
  );
+ CREATE TABLE Aluno_Treino(
+  id_aluno VARCHAR(30) NOT NULL,
+  id_treino VARCHAR(30)  NOT NULL,
+  CONSTRAINT PK_Aluno_treino PRIMARY KEY (id_aluno,id_treino)
+ )

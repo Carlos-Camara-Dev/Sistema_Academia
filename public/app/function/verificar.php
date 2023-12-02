@@ -10,6 +10,7 @@ session_start();
 // Verifica permissao:
 if (isset($_SESSION['usuario_id'])) {
     $usuario_id = $_SESSION['usuario_id'];
+    $usuario_acesso = $_SESSION['acesso_id'];
 }
 $operacao = $_GET['operacao'];
 
@@ -30,7 +31,7 @@ if (isset($_POST['aluno_nome'])) {
     $aluno_email = $_POST['aluno_email'];
     $aluno_senha = $_POST['aluno_senha'];
     // $aluno_pagar_dia = $_POST['aluno_pagar_dia'];
-    $aluno_treino = $_POST['aluno_treino'];
+    // $aluno_treino = $_POST['aluno_treino'];
 }
 // Dados dos Personal:
 if (isset($_POST['personal_nome'])) {
@@ -67,7 +68,7 @@ switch ($operacao) {
         // Verificar Aluno:
     case 'aluno':
 
-        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_treino='$aluno_treino'");
+        $verificar_aluno_id = $conexao->query("SELECT * FROM Aluno WHERE aluno_id= '$aluno_id' AND aluno_academia='$usuario_acesso'");
         $contador = $verificar_aluno_id->rowCount();
 
         if ($contador > 0) {
@@ -77,7 +78,7 @@ switch ($operacao) {
                 </script>';
         } else {
             $aluno = new Aluno($conexao);
-            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $usuario_id, $aluno_treino, $conexao);
+            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $usuario_acesso, $conexao);
         }
         break;
         // Verificar Personal:
@@ -98,7 +99,7 @@ switch ($operacao) {
 
         break;
     case 'treino':
-        $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_academia='$usuario_id' AND treino_id='$treino_id'");
+        $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_academia='$usuario_acesso' AND treino_id='$treino_id'");
         $contador = $verificar_treino_id->rowCount();
 
         if ($contador > 0) {
@@ -108,7 +109,7 @@ switch ($operacao) {
                     </script>';
         } else {
             $treino = new Treino($conexao);
-            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_id, $conexao);
+            $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_acesso, $conexao);
         }
         break;
     case 'destroy':

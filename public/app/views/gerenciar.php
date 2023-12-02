@@ -7,9 +7,9 @@ if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_i
 } else {
     $usuario = $_SESSION['usuario_nome'];
     $usuario_id = $_SESSION['usuario_id'];
-    $usuario_permicao = $_SESSION['permicao'];
+    $usuario_acesso = $_SESSION['acesso_id'];
+    $usuario_permissao = $_SESSION['permissao'];
     // session_destroy();
-
 }
 
 ?>
@@ -37,7 +37,7 @@ require_once("../classes/treino.php");
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
                 <?php
-                if ($usuario_permicao == "academia") {
+                if ($usuario_permissao == "academia") {
                     echo '<button onclick="abrir_gerenciar_personais()"> Personais </button>';
                 }
                 ?>
@@ -63,7 +63,7 @@ require_once("../classes/treino.php");
                 <h2>Gerenciar Personal</h2>
                 <?php
                 $personal = new Personal($conexao);
-                $personal->buscar_dados($usuario_id, $conexao);
+                $personal->buscar_dados($usuario_acesso, $conexao);
                 ?>
             </section>
             <!-- Cadastrar Personal -->
@@ -123,7 +123,7 @@ require_once("../classes/treino.php");
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
                     <!-- <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required> -->
-                    <input type="text" name="aluno_treino" placeholder="Digite o treino do aluno" required>
+                    <!-- <input type="text" name="aluno_treino" placeholder="Digite o treino do aluno" required> -->
                     <!-- <div id="aluno_treino_tipo">
                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" size="50">
                         <label for="vehicle1"> I have a bike</label><br>
@@ -146,7 +146,7 @@ require_once("../classes/treino.php");
                 <h2>Gerenciar Treinos</h2>
                 <?php
                 $treino = new Treino($conexao);
-                $treino->buscar_dados($usuario_id, $conexao);
+                $treino->buscar_dados($usuario_acesso, $conexao);
                 ?>
             </section>
             <section id="cadastrar_treino">
