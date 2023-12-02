@@ -1,27 +1,3 @@
-<?php
-
-session_start();
-
-if ((!isset($_SESSION['usuario_nome']) == true) and (!isset($_SESSION['usuario_id']) == true)) {
-    header('location: home.html');
-} else {
-    $usuario = $_SESSION['usuario_nome'];
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_acesso = $_SESSION['acesso_id'];
-    $usuario_permissao = $_SESSION['permissao'];
-    // session_destroy();
-}
-
-?>
-<?php
-
-require_once("../models/banco_conexao.php");
-require_once("../classes/academia.php");
-require_once("../classes/aluno.php");
-require_once("../classes/personal.php");
-require_once("../classes/treino.php");
-
-?>
 <html lang="en">
 
 <head>
@@ -67,7 +43,7 @@ require_once("../classes/treino.php");
                 ?>
             </section>
             <!-- Cadastrar Personal -->
-            <section id="cadastrar_personal">
+            <section id="cadastrar_personal" class="cadastrar">
                 <form action="../function/verificar.php?operacao=personal" method="post">
                     <h2>CADASTRAR PERSONAL </h2>
                     <input type="text" name="personal_nome" placeholder="Digite o nome do personal" required>
@@ -83,6 +59,7 @@ require_once("../classes/treino.php");
         <section id="gerenciar_alunos">
             <nav>
                 <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
+                <button onclick="abrir_cadastrar_aluno_treino()">Aluno Treino </button>
                 <button onclick="abrir_gerenciar_alunos_lista()"> Gerenciar Alunos </button>
             </nav>
             <!-- Lista de Alunos -->
@@ -115,7 +92,7 @@ require_once("../classes/treino.php");
                 </div>
             </section>
             <!-- Cadsatrar Alunos -->
-            <section id="cadastrar_aluno">
+            <section id="cadastrar_aluno" class="cadastrar">
                 <form action="../function/verificar.php?operacao=aluno" method="post">
                     <h2>CADASTRAR ALUNO </h2>
                     <input type="text" name="aluno_nome" placeholder="Digite o nome do aluno" required>
@@ -126,19 +103,20 @@ require_once("../classes/treino.php");
                 </form>
             </section>
             <!-- Cadsatrar Alunos nos treinos -->
-            <!-- <section id="cadastrar_aluno_treino">
+            <section id="cadastrar_aluno_treino" class="cadastrar">
                 <form action="../function/verificar.php?operacao=aluno_treino" method="post">
                     <h2>CADASTRAR ALUNO </h2>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="text" name="treino_id" placeholder="Digite o id do treino" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
-            </section> -->
+            </section>
         </section>
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
             <nav>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button
+                    onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
             </nav>
             <!-- Lista de Treinos -->
             <section id="gerenciar_treinos_lista">
@@ -148,7 +126,7 @@ require_once("../classes/treino.php");
                 $treino->buscar_dados($usuario_acesso, $conexao);
                 ?>
             </section>
-            <section id="cadastrar_treino">
+            <section id="cadastrar_treino" class="cadastrar">
                 <form action="../function/verificar.php?operacao=treino" method="post">
                     <h2>CADASTRAR TREINO </h2>
                     <input type="text" name="treino_nome" placeholder="Digite o nome do treino" required>

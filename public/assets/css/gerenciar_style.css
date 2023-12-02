@@ -27,6 +27,7 @@ h2 {
 } */
 #button_enty {
   box-shadow: #272727 0.25rem 0.3rem 0.45rem;
+  margin: 1.5rem;
   width: 15.5rem;
 }
 #button_enty:hover {
@@ -34,15 +35,11 @@ h2 {
   border: 0.2rem solid #424242;
   /* width: 15.5rem; */
 }
-#cadastrar_personal,
-#cadastrar_aluno,
-#cadastrar_treino {
+.cadastrar {
   display: none;
   margin: 1rem;
 }
-#cadastrar_personal form,
-#cadastrar_aluno form,
-#cadastrar_treino form {
+.cadastrar form {
   align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
@@ -55,9 +52,7 @@ h2 {
   width: 23rem;
 }
 
-#cadastrar_personal form input,
-#cadastrar_aluno form input,
-#cadastrar_treino form input {
+.cadastrar form input {
   border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
   margin: 0.75rem;

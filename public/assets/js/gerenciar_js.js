@@ -1,6 +1,7 @@
 
 let cadastrar_personal = document.getElementById("cadastrar_personal"), gerenciar_personais = document.getElementById("gerenciar_personais"), gerenciar_personais_lista = document.getElementById("gerenciar_personais_lista"),
     cadastrar_aluno = document.getElementById("cadastrar_aluno"),
+    cadastrar_aluno_treino = document.getElementById("cadastrar_aluno_treino"),
     gerenciar_alunos = document.getElementById("gerenciar_alunos"), gerenciar_alunos_lista = document.getElementById("gerenciar_alunos_lista"),
     cadastrar_treino = document.getElementById("cadastrar_treino"), gerenciar_treinos_lista = document.getElementById("gerenciar_treinos_lista"), gerenciar_treinos = document.getElementById("gerenciar_treinos");
 
@@ -42,6 +43,18 @@ function abrir_gerenciar_alunos() {
         if (gerenciar_treinos.style.display != "none") {
             gerenciar_treinos.style.display = "none";
         }
+
+    }
+}
+function abrir_cadastrar_aluno_treino() {
+    if (cadastrar_aluno_treino.style.display != "flex") {
+        cadastrar_aluno_treino.style.display = "flex";
+        if (cadastrar_aluno.style.display != "none") {
+            cadastrar_aluno.style.display = "none";
+        }
+        if (gerenciar_alunos_lista.style.display != "none") {
+            gerenciar_alunos_lista.style.display = "none";
+        }
     }
 }
 function abrir_gerenciar_alunos_lista() {
@@ -50,6 +63,9 @@ function abrir_gerenciar_alunos_lista() {
         if (cadastrar_aluno.style.display != "none") {
             cadastrar_aluno.style.display = "none";
         }
+        if (cadastrar_aluno_treino.style.display != "none") {
+            cadastrar_aluno_treino.style.display = "none";
+        }
     }
 
 } function abrir_cadastrar_aluno() {
@@ -57,6 +73,9 @@ function abrir_gerenciar_alunos_lista() {
         cadastrar_aluno.style.display = "flex";
         if (gerenciar_alunos_lista.style.display != "none") {
             gerenciar_alunos_lista.style.display = "none";
+        }
+        if (cadastrar_aluno_treino.style.display != "none") {
+            cadastrar_aluno_treino.style.display = "none";
         }
     }
 }
@@ -89,6 +108,4 @@ function abrir_gerenciar_treino() {
         }
     }
 
-} function location_reload() {
-    location.reload();
-}
+} 
