@@ -42,7 +42,7 @@ if (isset($_POST['usuario_id'])) {
                 if ($contador = 1) {
                     $_SESSION['permissao'] = "aluno";
                     $_SESSION['acesso_id'] = $_POST['usuario_id'];
-                    header('Location: ../views/gerenciar_aluno.php');
+                    header('Location: ../views/painel_aluno.php');
                 } else {
                     echo '<script  type="text/javascript">' .
                         "alert('O usuario não possui um cadastro!');" .

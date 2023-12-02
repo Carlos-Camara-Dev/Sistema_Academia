@@ -34,7 +34,9 @@ CREATE TABLE Personal(
    FOREIGN KEY(personal_academia) REFERENCES Academia(academia_cnpj)
  );
  CREATE TABLE Aluno_Treino(
-  id_aluno VARCHAR(30) NOT NULL,
-  id_treino VARCHAR(30)  NOT NULL,
-  CONSTRAINT PK_Aluno_treino PRIMARY KEY (id_aluno,id_treino)
+  aluno_id VARCHAR(30) NOT NULL,
+  treino_id VARCHAR(30)  NOT NULL,
+  academia_id VARCHAR(30) NOT NULL,
+  FOREIGN KEY(academia_id) REFERENCES Academia(academia_cnpj),
+  CONSTRAINT PK_Aluno_treino PRIMARY KEY (aluno_id,treino_id)
  )

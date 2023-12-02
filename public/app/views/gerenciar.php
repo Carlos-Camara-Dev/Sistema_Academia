@@ -122,19 +122,18 @@ require_once("../classes/treino.php");
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
-                    <!-- <input type="text" name="aluno_pagamento_dia" placeholder="Digite o dia do pagamento" required> -->
-                    <!-- <input type="text" name="aluno_treino" placeholder="Digite o treino do aluno" required> -->
-                    <!-- <div id="aluno_treino_tipo">
-                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" size="50">
-                        <label for="vehicle1"> I have a bike</label><br>
-                        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                        <label for="vehicle2"> I have a car</label><br>
-                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                        <label for="vehicle3"> I have a boat</label>
-                    </div> -->
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
+            <!-- Cadsatrar Alunos nos treinos -->
+            <!-- <section id="cadastrar_aluno_treino">
+                <form action="../function/verificar.php?operacao=aluno_treino" method="post">
+                    <h2>CADASTRAR ALUNO </h2>
+                    <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
+                    <input type="text" name="treino_id" placeholder="Digite o id do treino" required>
+                    <input type="submit" value="Cadastrar" id="button_enty">
+                </form>
+            </section> -->
         </section>
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
@@ -160,9 +159,7 @@ require_once("../classes/treino.php");
                 </form>
             </section>
         </section>
-
     </main>
-
     <script src="../../assets/js/gerenciar_js.js"></script>
 </body>
 

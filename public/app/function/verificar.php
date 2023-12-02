@@ -47,6 +47,11 @@ if (isset($_POST['treino_nome'])) {
     $treino_descricao = $_POST['treino_descricao'];
     $treino_tipo = $_POST['treino_tipo'];
 }
+// Dados para cadastrar aluno no treino:
+if (isset($_POST['aluno_id']) && isset($_POST['treino_id'])) {
+    $aluno_id = $_POST['aluno_id'];
+    $treino_id = $_POST['treino_id'];
+}
 
 switch ($operacao) {
         // Verificar Academia:
@@ -95,8 +100,6 @@ switch ($operacao) {
             $personal = new Personal($conexao);
             $personal->personal_cadastrar($personal_nome, $personal_id, $personal_email, $personal_senha, $usuario_id, $conexao);
         }
-
-
         break;
     case 'treino':
         $verificar_treino_id = $conexao->query("SELECT * FROM treino WHERE treino_nome= '$treino_nome' AND treino_academia='$usuario_acesso' AND treino_id='$treino_id'");
@@ -112,11 +115,25 @@ switch ($operacao) {
             $treino->treino_cadastrar($treino_nome, $treino_id, $treino_descricao, $treino_tipo, $usuario_acesso, $conexao);
         }
         break;
+    case 'aluno_treino':
+        $verificar_aluno_treino = $conexao->query("SELECT * FROM aluno_treino WHERE aluno_id= '$aluno_id' AND treino_id='$treino_id' AND academia_id='$usuario_acesso'");
+        $contador = $verificar_aluno_treino->rowCount();
+
+        if ($contador > 0) {
+            echo '<script  type="text/javascript">' .
+                "alert('O aluno $aluno_id já tem o seu treino cadastrado!');" .
+                'window.history.back();
+                        </script>';
+        } else {
+            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, academia_id) VALUES('$aluno_id', '$treino_id','$academia_id')");
+            echo '<script  type="text/javascript">' .
+                "alert('O treino de $aluno_id foi criado.');" .  'window.history.back();</script>';
+        }
+        break;
     case 'destroy':
         session_destroy();
         header('Location: ../views/home.html');
         break;
     default:
-        # code...
         break;
 }
