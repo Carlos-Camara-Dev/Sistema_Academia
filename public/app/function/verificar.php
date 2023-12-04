@@ -39,6 +39,7 @@ if (isset($_POST['personal_nome'])) {
     $personal_id = $_POST['personal_id'];
     $personal_senha = $_POST['personal_senha'];
     $personal_email = $_POST['personal_email'];
+    $aluno_dia_pagamento = $_POST['aluno_dia_pagamento'];
 }
 // Dados dos Treino:
 if (isset($_POST['treino_nome'])) {
@@ -83,7 +84,7 @@ switch ($operacao) {
                 </script>';
         } else {
             $aluno = new Aluno($conexao);
-            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $usuario_acesso, $conexao);
+            $aluno->aluno_cadastrar($aluno_nome, $aluno_id, $aluno_email, $aluno_senha, $aluno_dia_pagamento, $usuario_acesso, $conexao);
         }
         break;
         // Verificar Personal:

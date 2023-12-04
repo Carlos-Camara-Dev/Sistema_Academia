@@ -7,12 +7,12 @@ body {
   background: #a2a2a2;
   margin: 0;
 }
-a {
-  color: #ffffff;
-}
 
 h2 {
   font-size: 1.7rem;
+}
+h3 {
+  margin: 0;
 }
 #gerenciar_nav_bar {
   display: flex;
@@ -38,40 +38,103 @@ h2 {
 #main {
   align-items: center;
   display: flex;
-  height: 90vh;
+  height: 120vh;
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
 }
+/* Foto de Dados do Perfil */
+#input_foto_perfil {
+  display: none;
+}
 #perfil {
   align-items: center;
   background: #dcdcdc;
-  border: 0.13rem solid #000000;
+  border: 0.1rem solid #000000;
+  border-radius: 1rem;
   display: flex;
-  height: 35vh;
+  height: 40vh;
   justify-content: space-evenly;
   margin: 0;
   width: 80vw;
 }
 #perfil_dados,
 #perfil_img {
-  border: 0.2rem solid #000000;
-  height: 30vh;
+  background: #cdcdcd;
+  border: 0.1rem solid #000000;
+  border-radius: 1rem;
+  height: 35vh;
 }
 
 #perfil_dados {
-  background: #cdcdcd;
-  font-size: 1.1rem;
-  text-align: center;
+  display: flex;
+  font-size: 1rem;
   width: 45vw;
 }
+
 #perfil_img {
+  border-radius: 5rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+}
+
+#label_foto_perfil {
+  cursor: pointer;
+  padding: 15vh 5vw;
+}
+.puxar_informacoes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 25vw;
+}
+.puxar_informacoes h3 {
+  background: #e70505;
+  border: 0.15rem solid #000000;
+  color: #ffffff;
   width: 15vw;
 }
 /* Informações do Perfil */
+
+#button_enty {
+  box-shadow: #272727 0.25rem 0.3rem 0.45rem;
+  margin: 1.5rem;
+  padding: 0.7rem 0 !important;
+  width: 15.5rem !important;
+}
+#button_enty:hover {
+  background: #18db4c;
+  border: 0.2rem solid #424242;
+}
+
 #perfil_informacao {
   background: #dcdcdc;
   border: 0.1rem solid #000000;
-  height: 40vh;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
   width: 80vw;
+}
+#perfil_informacao form {
+  align-items: center;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+  text-align: center;
+  width: 60vw;
+}
+#perfil_informacao form input {
+  background: #eeeeee;
+  border: 0.15rem solid #a2a2a2;
+  border-radius: 0.9rem;
+  margin: 0.75rem;
+  font-size: 1.1rem;
+  padding: 1rem 0;
+  width: 45vw;
+  text-align: center;
 }

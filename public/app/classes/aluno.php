@@ -66,9 +66,9 @@ class Aluno
         $this->academia = $academia;
     }
 
-    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_academia, $conexao)
+    public function aluno_cadastrar($aluno_nome, $aluno_id,  $aluno_email, $aluno_senha, $aluno_dia_pagamento, $aluno_academia, $conexao)
     {
-        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha', '$aluno_academia')");
+        $cadastrar_personal = $conexao->query("INSERT INTO Aluno(aluno_nome, aluno_id,aluno_email,aluno_senha, aluno_dia_pagamento, aluno_academia) VALUES('$aluno_nome', '$aluno_id','$aluno_email','$aluno_senha', '$aluno_dia_pagamento','$aluno_academia')");
         echo '<script  type="text/javascript">' .
             "alert('O aluno $aluno_nome com o id $aluno_id foi criado.');" .
             'window.history.back();</script>';
@@ -91,5 +91,11 @@ class Aluno
                 </table>
                 </div>";
         }
+    }
+    function buscar_dado($dado_tipo, $aluno_academia, $conexao)
+    {
+        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia'");
+        $dados = $comando->fetch(PDO::FETCH_ASSOC);
+        return $dados["$dado_tipo"];
     }
 }

@@ -1,3 +1,25 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['usuario_permissao']) == true) {
+    if ((!isset($_SESSION['usuario_permissao']) == "academia") || (!isset($_SESSION['usuario_permissao']) == "personal")) {
+        header('location: home.html');
+    }
+} else {
+    $usuario = $_SESSION['usuario_nome'];
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_permissao = $_SESSION['permissao'];
+    // session_destroy();
+}
+
+require_once("../models/banco_conexao.php");
+require_once("../classes/academia.php");
+require_once("../classes/aluno.php");
+require_once("../classes/personal.php");
+require_once("../classes/treino.php");
+
+?>
 <html lang="en">
 
 <head>
@@ -99,6 +121,7 @@
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
+                    <input type="password" name="aluno_dia_pagamento" placeholder="Digite o dia do pagamento" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
@@ -115,8 +138,7 @@
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
             <nav>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button
-                    onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
             </nav>
             <!-- Lista de Treinos -->
             <section id="gerenciar_treinos_lista">

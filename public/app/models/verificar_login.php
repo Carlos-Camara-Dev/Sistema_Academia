@@ -40,7 +40,10 @@ if (isset($_POST['usuario_id'])) {
                 $contador = $verificar->rowCount();
 
                 if ($contador = 1) {
+                    $dados = $verificar->fetch(PDO::FETCH_ASSOC);
+
                     $_SESSION['permissao'] = "aluno";
+                    $_SESSION['academia'] = $dados["aluno_academia"];
                     $_SESSION['acesso_id'] = $_POST['usuario_id'];
                     header('Location: ../views/painel_aluno.php');
                 } else {
