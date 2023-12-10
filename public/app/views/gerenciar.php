@@ -2,14 +2,15 @@
 
 session_start();
 
-if (!isset($_SESSION['usuario_permissao']) == true) {
-    if ((!isset($_SESSION['usuario_permissao']) == "academia") || (!isset($_SESSION['usuario_permissao']) == "personal")) {
+if (!isset($_SESSION['permissao']) == true) {
+    if ((!isset($_SESSION['permissao']) == "academia") || (!isset($_SESSION['permissao']) == "personal")) {
         header('location: home.html');
     }
 } else {
-    $usuario = $_SESSION['usuario_nome'];
+    $usuario_nome = $_SESSION['usuario_nome'];
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_permissao = $_SESSION['permissao'];
+    $usuario_acesso = $_SESSION['acesso_id'];
     // session_destroy();
 }
 
@@ -34,7 +35,9 @@ require_once("../classes/treino.php");
     <header>
         <nav id="gerenciar_nav_bar">
             <div id="gerenciar_nav_bar_visualizar">
+
                 <?php
+                echo  $usuario_nome;
                 if ($usuario_permissao == "academia") {
                     echo '<button onclick="abrir_gerenciar_personais()"> Personais </button>';
                 }

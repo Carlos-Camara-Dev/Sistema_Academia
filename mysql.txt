@@ -40,6 +40,7 @@ CREATE TABLE Personal(
  CREATE TABLE Aluno_Treino(
   aluno_id VARCHAR(30) NOT NULL,
   treino_id VARCHAR(30)  NOT NULL,
+  dia_treino VARCHAR(10) NOT NULL,
   academia_id VARCHAR(30) NOT NULL,
   FOREIGN KEY(academia_id) REFERENCES Academia(academia_cnpj),
   CONSTRAINT PK_Aluno_treino PRIMARY KEY (aluno_id,treino_id)

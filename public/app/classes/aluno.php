@@ -95,7 +95,40 @@ class Aluno
     function buscar_dado($dado_tipo, $aluno_academia, $conexao)
     {
         $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia'");
-        $dados = $comando->fetch(PDO::FETCH_ASSOC);
-        return $dados["$dado_tipo"];
+        // Puxa o dado a parti do seu tipo e dar echo:
+        while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+            $informacao = $dados[$dado_tipo];
+            echo $informacao;
+        }
+    }
+    function buscar_treinos_aluno($aluno_id, $conexao)
+    {
+        $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
+        // Verifica se o aluno tem treino:
+        if ($comando->rowCount() > 0) {
+            while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+                // Verifica o id do treino na tabela Treino:
+                $treino_id = $dados["treino_id"];
+                $comando = $conexao->query("SELECT * FROM Treino WHERE treino_id = '$treino_id' ORDER BY dia_treino ASC");
+                // Puxa os dados do treino e dar um echo:
+                if ($comando->rowCount() > 0) {
+                    $dados = $comando->fetch(PDO::FETCH_ASSOC);
+                    echo '<div class="informacao">' .
+                        '<table>' .
+                        '<tr>
+                <th>Treino</th>
+                <th>Tipo de Treino</th>
+                <th>Descricao</th>
+                </tr>
+                <tr>
+                <td>' . $dados["terino_nome"] . "</td>
+                <td>" . $dados["treino_tipo"] . "</td> 
+                <td>" . $dados["treino_descricao"] . "</td>
+                </tr>
+                </table>
+                </div>";
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
-<!-- session_start();
+<?php
+session_start();
 
-if ((!isset($_SESSION['usuario_permissao']) == aluno) and (!isset($_SESSION['usuario_id']) == true)) {
+if ((!isset($_SESSION['usuario_permissao']) == "aluno") and (!isset($_SESSION['usuario_id']) == true)) {
     header('location: home.html');
 } else {
     $usuario_nome = $_SESSION['usuario_nome'];
@@ -8,13 +9,13 @@ if ((!isset($_SESSION['usuario_permissao']) == aluno) and (!isset($_SESSION['usu
     $usuario_academia = $_SESSION['academia'];
     $usuario_permissao = $_SESSION['permissao'];
     // session_destroy();
-} 
+}
 
 require_once("../models/banco_conexao.php");
 require_once("../classes/aluno.php");
- $aluno = new Aluno($conexao);
--->
+$aluno = new Aluno($conexao);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +31,9 @@ require_once("../classes/aluno.php");
         <nav id="gerenciar_nav_bar">
             <button onclick="abrir_gerenciar_alunos()"> Treinos</button>
             <button onclick="abrir_gerenciar_treino()"> Perfil </button>
+            <button>
+                <a href="../function/verificar.php?operacao=destroy">Sair</a>
+            </button>
         </nav>
     </header>
     <main id="main">
@@ -41,34 +45,62 @@ require_once("../classes/aluno.php");
             <section id="perfil_dados">
                 <div class="puxar_informacoes">
                     <h3> Usuario</h3>
-                    <p> echo $usuario_nome </p>
+                    <p> <?php
+                        echo $usuario_nome;
+                        ?>
+                    </p>
                     <h3> Id do Usuario</h3>
-                    <p> echo $usuario_id </p>
+                    <p>
+                        <?php
+                        echo $usuario_id;
+                        ?>
+                    </p>
                 </div>
                 <div class="puxar_informacoes">
                     <h3> Treino</h3>
-                    <p> echo $usuario_treinos </p>
+                    <p>
+                        <?php
+                        echo $usuario_treinos
+                        ?>
+                    </p>
                     <h3> Data de Pagamento </h3>
                     <p>
-                        echo $aluno->$this.buscar_dado("aluno_dia_pagamento", $usuario_academia, $conexao);
-                        <!-- $usuario_data_pagamento -->
+                        <?php
+                        $aluno->buscar_dado("aluno_dia_pagamento", $usuario_academia, $conexao);
+                        // <!-- $usuario_data_pagamento -->
+                        ?>
                     </p>
+
                 </div>
             </section>
         </section>
         <section id="perfil_informacao">
             <div class="puxar_informacoes">
                 <h3> Peso</h3>
-                <p> echo $aluno->$this.buscar_dado("aluno_peso", $usuario_academia, $conexao); </p>
+                <p>
+                    <?php
+                    $aluno->buscar_dado("aluno_peso", $usuario_academia, $conexao);
+                    ?>
+                </p>
                 <h3> Altura</h3>
-                <p> echo $aluno->$this.buscar_dado("aluno_altura", $usuario_academia, $conexao);</p>
+                <p>
+                    <?php
+                    $aluno->buscar_dado("aluno_altura", $usuario_academia, $conexao);
+                    ?>
+                </p>
                 <h3> Condição</h3>
-                <p> echo $aluno->$this.buscar_dado("aluno_condicao", $usuario_academia, $conexao); </p>
+                <p>
+                    <?php
+                    $aluno->buscar_dado("aluno_condicao", $usuario_academia, $conexao);
+                    ?>
+                </p>
+
             </div>
             <form action="../function/verificar.php?operacao=aluno_dados" method="post">
                 <h2>Atualizar Dados</h2>
                 <input type="text" name="aluno_altura" placeholder="Digite a sua altura" required>
                 <input type="text" name="aluno_peso" placeholder="Digite o seu peso" required>
+                <input type="text" name="aluno_dia" placeholder="Digite o dia do treino" required>
                 <input type="text" name="aluno_condicao" placeholder="Digite a sua condiçao" required>
                 <input type="submit" value="Cadastrar" id="button_enty">
             </form>

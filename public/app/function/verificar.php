@@ -52,6 +52,7 @@ if (isset($_POST['treino_nome'])) {
 if (isset($_POST['aluno_id']) && isset($_POST['treino_id'])) {
     $aluno_id = $_POST['aluno_id'];
     $treino_id = $_POST['treino_id'];
+    $dia_treino = $_POST['dia_treino'];
 }
 
 switch ($operacao) {
@@ -126,7 +127,7 @@ switch ($operacao) {
                 'window.history.back();
                         </script>';
         } else {
-            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, academia_id) VALUES('$aluno_id', '$treino_id','$academia_id')");
+            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, dia_treino, academia_id) VALUES('$aluno_id', '$treino_id','$dia_treino','$academia_id')");
             echo '<script  type="text/javascript">' .
                 "alert('O treino de $aluno_id foi criado.');" .  'window.history.back();</script>';
         }
