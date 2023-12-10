@@ -127,10 +127,14 @@ switch ($operacao) {
                 'window.history.back();
                         </script>';
         } else {
-            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, dia_treino, academia_id) VALUES('$aluno_id', '$treino_id','$dia_treino','$academia_id')");
+            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, dia_treino, academia_id) VALUES('$aluno_id', '$treino_id','$dia_treino','$usuario_acesso')");
             echo '<script  type="text/javascript">' .
                 "alert('O treino de $aluno_id foi criado.');" .  'window.history.back();</script>';
         }
+        break;
+    case 'aluno_dados':
+        echo '<script  type="text/javascript">' .
+            "alert('$aluno_nome, os seus dados foram atualizados.');" .  'window.history.back();</script>';
         break;
     case 'destroy':
         session_destroy();

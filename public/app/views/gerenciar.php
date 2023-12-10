@@ -2,24 +2,25 @@
 
 session_start();
 
-if (!isset($_SESSION['permissao']) == true) {
+if (isset($_SESSION['permissao']) == true) {
     if ((!isset($_SESSION['permissao']) == "academia") || (!isset($_SESSION['permissao']) == "personal")) {
         header('location: home.html');
+    } else {
+        $usuario_nome = $_SESSION['usuario_nome'];
+        $usuario_id = $_SESSION['usuario_id'];
+        $usuario_permissao = $_SESSION['permissao'];
+        $usuario_acesso = $_SESSION['acesso_id'];
+        // session_destroy();
+
+        require_once("../models/banco_conexao.php");
+        require_once("../classes/academia.php");
+        require_once("../classes/aluno.php");
+        require_once("../classes/personal.php");
+        require_once("../classes/treino.php");
     }
 } else {
-    $usuario_nome = $_SESSION['usuario_nome'];
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_permissao = $_SESSION['permissao'];
-    $usuario_acesso = $_SESSION['acesso_id'];
-    // session_destroy();
+    header('location: home.html');
 }
-
-require_once("../models/banco_conexao.php");
-require_once("../classes/academia.php");
-require_once("../classes/aluno.php");
-require_once("../classes/personal.php");
-require_once("../classes/treino.php");
-
 ?>
 <html lang="en">
 
@@ -90,31 +91,11 @@ require_once("../classes/treino.php");
             <!-- Lista de Alunos -->
             <section id="gerenciar_alunos_lista">
                 <h2>Gerenciar Alunos</h2>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
-                <div class="informacao">
-                    feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                    doming
-                    id quod mazim placerat facer possim as
-                </div>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_dados($usuario_acesso, $conexao);
+                ?>
+
             </section>
             <!-- Cadsatrar Alunos -->
             <section id="cadastrar_aluno" class="cadastrar">
@@ -131,9 +112,10 @@ require_once("../classes/treino.php");
             <!-- Cadsatrar Alunos nos treinos -->
             <section id="cadastrar_aluno_treino" class="cadastrar">
                 <form action="../function/verificar.php?operacao=aluno_treino" method="post">
-                    <h2>CADASTRAR ALUNO </h2>
+                    <h2>CADASTRAR ALUNO-TREINO </h2>
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="text" name="treino_id" placeholder="Digite o id do treino" required>
+                    <input type="text" name="dia_treino" placeholder="Digite o dia do treino" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>

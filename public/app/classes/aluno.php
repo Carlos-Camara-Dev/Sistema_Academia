@@ -83,10 +83,13 @@ class Aluno
                 <th>Aluno ID</th>
                 <th>Aluno Nome</th>
                 <th>Aluno Email</th>
+                <th>Aluno Pagamento</th>
                 </tr>
                 <tr>
                 <td>' . $dados["aluno_id"] . "</td>
                 <td>" . $dados["aluno_nome"] . "</td>
+                <td>" . $dados["aluno_email"] . "</td>
+                <td>" . $dados["aluno_dia_pagamento"] . "</td>                
                 </tr>
                 </table>
                 </div>";
@@ -130,5 +133,10 @@ class Aluno
                 }
             }
         }
+    }
+    function treinos_quantidade($aluno_id, $conexao)
+    {
+        $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
+        echo $comando->rowCount();
     }
 }

@@ -1,20 +1,21 @@
 <?php
 session_start();
+if ((isset($_SESSION['usuario_id']) == true)) {
+    if ((!isset($_SESSION['usuario_permissao']) == "aluno") || (!isset($_SESSION['usuario_permissao']) == "academia")) {
+    } else {
+        $usuario_nome = $_SESSION['usuario_nome'];
+        $usuario_id = $_SESSION['usuario_id'];
+        $usuario_academia = $_SESSION['academia'];
+        $usuario_permissao = $_SESSION['permissao'];
+        // session_destroy();
 
-if ((!isset($_SESSION['usuario_permissao']) == "aluno") and (!isset($_SESSION['usuario_id']) == true)) {
-    header('location: home.html');
+        require_once("../models/banco_conexao.php");
+        require_once("../classes/aluno.php");
+        $aluno = new Aluno($conexao);
+    }
 } else {
-    $usuario_nome = $_SESSION['usuario_nome'];
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_academia = $_SESSION['academia'];
-    $usuario_permissao = $_SESSION['permissao'];
-    // session_destroy();
+    header('location: home.html');
 }
-
-require_once("../models/banco_conexao.php");
-require_once("../classes/aluno.php");
-$aluno = new Aluno($conexao);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,13 +61,14 @@ $aluno = new Aluno($conexao);
                     <h3> Treino</h3>
                     <p>
                         <?php
-                        echo $usuario_treinos
+                        $aluno->treinos_quantidade($usuario_id, $conexao);
                         ?>
                     </p>
                     <h3> Data de Pagamento </h3>
                     <p>
                         <?php
-                        $aluno->buscar_dado("aluno_dia_pagamento", $usuario_academia, $conexao);
+                        // 
+
                         // <!-- $usuario_data_pagamento -->
                         ?>
                     </p>
@@ -100,7 +102,6 @@ $aluno = new Aluno($conexao);
                 <h2>Atualizar Dados</h2>
                 <input type="text" name="aluno_altura" placeholder="Digite a sua altura" required>
                 <input type="text" name="aluno_peso" placeholder="Digite o seu peso" required>
-                <input type="text" name="aluno_dia" placeholder="Digite o dia do treino" required>
                 <input type="text" name="aluno_condicao" placeholder="Digite a sua condiçao" required>
                 <input type="submit" value="Cadastrar" id="button_enty">
             </form>
