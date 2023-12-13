@@ -54,7 +54,11 @@ if (isset($_POST['aluno_id']) && isset($_POST['treino_id'])) {
     $treino_id = $_POST['treino_id'];
     $dia_treino = $_POST['dia_treino'];
 }
-
+if (isset($_POST['aluno_altura'])) {
+    $aluno_altura = $_POST['aluno_altura'];
+    $aluno_peso = $_POST['aluno_peso'];
+    $aluno_condicao = $_POST['aluno_condicao'];
+}
 switch ($operacao) {
         // Verificar Academia:
     case 'academia':
@@ -133,6 +137,10 @@ switch ($operacao) {
         }
         break;
     case 'aluno_dados':
+        $aluno = new Aluno($conexao);
+        $aluno->atualizar_dados($usuario_id, "aluno_altura", $aluno_altura, $conexao);
+        $aluno->atualizar_dados($usuario_id, "aluno_peso", $aluno_peso, $conexao);
+        $aluno->atualizar_dados($usuario_id, "aluno_condicao", $aluno_condicao, $conexao);
         echo '<script  type="text/javascript">' .
             "alert('$aluno_nome, os seus dados foram atualizados.');" .  'window.history.back();</script>';
         break;

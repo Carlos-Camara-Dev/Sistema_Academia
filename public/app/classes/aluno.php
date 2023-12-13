@@ -112,25 +112,28 @@ class Aluno
             while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
                 // Verifica o id do treino na tabela Treino:
                 $treino_id = $dados["treino_id"];
-                $comando = $conexao->query("SELECT * FROM Treino WHERE treino_id = '$treino_id' ORDER BY dia_treino ASC");
+                $treino_dia = $dados["dia_treino"];
+
+                $comando_treino = $conexao->query("SELECT * FROM Treino WHERE treino_id = '$treino_id'");
                 // Puxa os dados do treino e dar um echo:
-                if ($comando->rowCount() > 0) {
-                    $dados = $comando->fetch(PDO::FETCH_ASSOC);
-                    echo '<div class="informacao">' .
-                        '<table>' .
-                        '<tr>
-                <th>Treino</th>
-                <th>Tipo de Treino</th>
-                <th>Descricao</th>
-                </tr>
-                <tr>
-                <td>' . $dados["terino_nome"] . "</td>
-                <td>" . $dados["treino_tipo"] . "</td> 
-                <td>" . $dados["treino_descricao"] . "</td>
-                </tr>
-                </table>
-                </div>";
-                }
+
+                $dados_treino = $comando_treino->fetch(PDO::FETCH_ASSOC);
+                echo '<div class="informacao">' .
+                    '<table>' .
+                    '<tr>
+                        <th>Treino</th>
+                        <th>Tipo de Treino</th>
+                        <th>Descricao</th>
+                        <th>Dia do Treino</th>
+                        </tr>
+                        <tr>
+                        <td>' . $dados_treino["treino_nome"] . "</td>
+                        <td>" . $dados_treino["treino_tipo"] . "</td> 
+                        <td>" . $dados_treino["treino_descricao"] . "</td>
+                        <td>" . $treino_dia . "</td>
+                        </tr>
+                        </table>
+                        </div>";
             }
         }
     }
@@ -138,5 +141,9 @@ class Aluno
     {
         $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
         echo $comando->rowCount();
+    }
+    function atualizar_dados($aluno_id, $dado_tipo, $aluno_dado, $conexao)
+    {
+        $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='$aluno_dado' WHERE aluno_id='$aluno_id';");
     }
 }

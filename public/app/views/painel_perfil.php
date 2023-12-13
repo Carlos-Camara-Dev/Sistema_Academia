@@ -1,14 +1,14 @@
 <?php
 session_start();
 if ((isset($_SESSION['usuario_id']) == true)) {
-    if ((!isset($_SESSION['usuario_permissao']) == "aluno") || (!isset($_SESSION['usuario_permissao']) == "academia")) {
+    if ((!isset($_SESSION['permissao']) == "aluno") || (!isset($_SESSION['permissao']) == "academia")) {
+        header('location: home.html');
     } else {
         $usuario_nome = $_SESSION['usuario_nome'];
         $usuario_id = $_SESSION['usuario_id'];
         $usuario_academia = $_SESSION['academia'];
         $usuario_permissao = $_SESSION['permissao'];
         // session_destroy();
-
         require_once("../models/banco_conexao.php");
         require_once("../classes/aluno.php");
         $aluno = new Aluno($conexao);
@@ -30,8 +30,11 @@ if ((isset($_SESSION['usuario_id']) == true)) {
 <body>
     <header>
         <nav id="gerenciar_nav_bar">
-            <button onclick="abrir_gerenciar_alunos()"> Treinos</button>
-            <button onclick="abrir_gerenciar_treino()"> Perfil </button>
+            <button>
+                <a href="painel_treinos.php">Treinos</a>
+            </button>
+            <button>
+                <a href="painel_perfil.php">Perfil </a> </button>
             <button>
                 <a href="../function/verificar.php?operacao=destroy">Sair</a>
             </button>
@@ -67,9 +70,7 @@ if ((isset($_SESSION['usuario_id']) == true)) {
                     <h3> Data de Pagamento </h3>
                     <p>
                         <?php
-                        // 
-
-                        // <!-- $usuario_data_pagamento -->
+                        $usuario_data_pagamento
                         ?>
                     </p>
 
@@ -96,7 +97,6 @@ if ((isset($_SESSION['usuario_id']) == true)) {
                     $aluno->buscar_dado("aluno_condicao", $usuario_academia, $conexao);
                     ?>
                 </p>
-
             </div>
             <form action="../function/verificar.php?operacao=aluno_dados" method="post">
                 <h2>Atualizar Dados</h2>

@@ -19,11 +19,14 @@ h3 {
   margin: 0;
   width: 100%;
 }
+#gerenciar_nav_bar button a {
+  color: #ffffff;
+}
 #gerenciar_nav_bar button {
   border: 0.2rem solid #000000;
   background: #e70505;
   border-radius: 0.9rem;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size: 1.7rem;
   margin: 0.7rem;
   text-decoration: none;
