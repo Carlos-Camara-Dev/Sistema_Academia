@@ -87,4 +87,8 @@ class Treino
                 </div>";
         }
     }
+    function exluir($treino_id, $conexao)
+    {
+        $comando = $conexao->query("DELETE FROM Treino WHERE aluno_id='$treino_id");
+    }
 }

@@ -84,12 +84,15 @@ class Aluno
                 <th>Aluno Nome</th>
                 <th>Aluno Email</th>
                 <th>Aluno Pagamento</th>
+                <th> Opções </th>
                 </tr>
                 <tr>
                 <td>' . $dados["aluno_id"] . "</td>
                 <td>" . $dados["aluno_nome"] . "</td>
                 <td>" . $dados["aluno_email"] . "</td>
-                <td>" . $dados["aluno_dia_pagamento"] . "</td>                
+                <td>" . $dados["aluno_dia_pagamento"] . "</td> 
+                <td>" .
+                '<button onclick="exluir($aluno_id, $conexao)"> Excluir </buttom> '  . "</td>                
                 </tr>
                 </table>
                 </div>";
@@ -145,5 +148,9 @@ class Aluno
     function atualizar_dados($aluno_id, $dado_tipo, $aluno_dado, $conexao)
     {
         $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='$aluno_dado' WHERE aluno_id='$aluno_id';");
+    }
+    function exluir($aluno_id, $conexao)
+    {
+        $comando = $conexao->query("DELETE FROM Aluno WHERE aluno_id='$aluno_id");
     }
 }
