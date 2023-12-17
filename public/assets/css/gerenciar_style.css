@@ -35,11 +35,11 @@ h2 {
   border: 0.2rem solid #424242;
   /* width: 15.5rem; */
 }
-.cadastrar {
+.cadastrar, #excluir {
   display: none;
   margin: 1rem;
 }
-.cadastrar form {
+.cadastrar form, #excluir form {
   align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
@@ -52,7 +52,7 @@ h2 {
   width: 23rem;
 }
 
-.cadastrar form input {
+.cadastrar form input,  #excluir form input {
   border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
   margin: 0.75rem;

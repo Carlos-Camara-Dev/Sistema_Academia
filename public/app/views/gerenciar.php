@@ -45,6 +45,7 @@ if (isset($_SESSION['permissao']) == true) {
                 ?>
                 <button onclick="abrir_gerenciar_alunos()"> Aluno</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
+                <button onclick="abrir_excluir()"> Excluir </button>
             </div>
             <div id="gerenciar_nav_bar_sair">
                 <button>
@@ -59,6 +60,7 @@ if (isset($_SESSION['permissao']) == true) {
             <nav>
                 <button onclick="abrir_cadastrar_personal()"> Cadastrar Personal </button>
                 <button onclick="abrir_gerenciar_personais_lista()"> Gerenciar Personal</button>
+
             </nav>
             <!-- Lista de Personal -->
             <section id="gerenciar_personais_lista">
@@ -143,6 +145,14 @@ if (isset($_SESSION['permissao']) == true) {
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
+        </section>
+        <section id=excluir>
+            <form action="../function/verificar.php?operacao=excluir" method="post">
+                <h2>EXCLUIR</h2>
+                <input type="text" name="excluir_id" placeholder="Digite o id para excluir" required>
+                <input type="text" name="excluir_tipo" placeholder="Digite o tipo de usuario" required>
+                <input type="submit" value="Cadastrar" id="button_enty">
+            </form>
         </section>
     </main>
     <script src="../../assets/js/gerenciar_js.js"></script>

@@ -3,7 +3,7 @@ let cadastrar_personal = document.getElementById("cadastrar_personal"), gerencia
     cadastrar_aluno = document.getElementById("cadastrar_aluno"),
     cadastrar_aluno_treino = document.getElementById("cadastrar_aluno_treino"),
     gerenciar_alunos = document.getElementById("gerenciar_alunos"), gerenciar_alunos_lista = document.getElementById("gerenciar_alunos_lista"),
-    cadastrar_treino = document.getElementById("cadastrar_treino"), gerenciar_treinos_lista = document.getElementById("gerenciar_treinos_lista"), gerenciar_treinos = document.getElementById("gerenciar_treinos");
+    cadastrar_treino = document.getElementById("cadastrar_treino"), gerenciar_treinos_lista = document.getElementById("gerenciar_treinos_lista"), gerenciar_treinos = document.getElementById("gerenciar_treinos"), excluir = document.getElementById("exluir");
 
 // Gerenciar Adm's:
 function abrir_gerenciar_personais() {
@@ -14,6 +14,9 @@ function abrir_gerenciar_personais() {
         }
         if (gerenciar_treinos.style.display != "none") {
             gerenciar_treinos.style.display = "none";
+        }
+        if (excluir.style.display != "none") {
+            excluir.style.display = "none";
         }
     }
 }
@@ -43,7 +46,9 @@ function abrir_gerenciar_alunos() {
         if (gerenciar_treinos.style.display != "none") {
             gerenciar_treinos.style.display = "none";
         }
-
+        if (excluir.style.display != "none") {
+            excluir.style.display = "none";
+        }
     }
 }
 function abrir_cadastrar_aluno_treino() {
@@ -90,6 +95,9 @@ function abrir_gerenciar_treino() {
         if (gerenciar_alunos.style.display != "none") {
             gerenciar_alunos.style.display = "none";
         }
+        if (excluir.style.display != "none") {
+            excluir.style.display = "none";
+        }
 
     }
 } function abrir_gerenciar_treinos_lista() {
@@ -108,4 +116,22 @@ function abrir_gerenciar_treino() {
         }
     }
 
-} 
+}
+
+// Exluir:
+function abri_excluir() {
+    if (excluir.style.display != "flex") {
+        excluir.style.display = "flex";
+
+        if (gerenciar_alunos.style.display != "flex") {
+            gerenciar_alunos.style.display = "flex";
+        }
+        if (gerenciar_personais.style.display != "none") {
+            gerenciar_personais.style.display = "none";
+        }
+        if (gerenciar_treinos.style.display != "none") {
+            gerenciar_treinos.style.display = "none";
+        }
+
+    }
+}

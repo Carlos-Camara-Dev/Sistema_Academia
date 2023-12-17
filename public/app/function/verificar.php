@@ -59,6 +59,10 @@ if (isset($_POST['aluno_altura'])) {
     $aluno_peso = $_POST['aluno_peso'];
     $aluno_condicao = $_POST['aluno_condicao'];
 }
+if (isset($_POST['excluir_id'])) {
+    $excluir = $_POST['exluir_id'];
+    $excluir_tipo = $_POST['excluir_tipo'];
+}
 switch ($operacao) {
         // Verificar Academia:
     case 'academia':
@@ -147,6 +151,9 @@ switch ($operacao) {
     case 'destroy':
         session_destroy();
         header('Location: ../views/home.html');
+        break;
+    case 'excluir':
+        $comando = $conexao->query("DELETE FROM '$excluir_tipo' WHERE '$exluir_tipo'_id='$personal_id");
         break;
     default:
         break;

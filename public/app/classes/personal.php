@@ -87,8 +87,8 @@ class Personal
                 </div>";
         }
     }
-    function exluir($personal_id, $conexao)
-    {
-        $comando = $conexao->query("DELETE FROM Personal WHERE personal_id='$personal_id");
-    }
+    // function exluir($personal_id, $conexao)
+    // {
+    //     $comando = $conexao->query("DELETE FROM Personal WHERE personal_id='$personal_id");
+    // }
 }
