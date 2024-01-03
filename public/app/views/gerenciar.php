@@ -2,8 +2,8 @@
 
 session_start();
 
-if (isset($_SESSION['permissao']) == true) {
-    if ((!isset($_SESSION['permissao']) == "academia") || (!isset($_SESSION['permissao']) == "personal")) {
+if (isset($_SESSION['permissao'])) {
+    if (!($_SESSION['permissao'] == "academia" || $_SESSION['permissao'] == "personal")) {
         header('location: home.html');
     } else {
         $usuario_nome = $_SESSION['usuario_nome'];
@@ -35,17 +35,26 @@ if (isset($_SESSION['permissao']) == true) {
 <body>
     <header>
         <nav id="gerenciar_nav_bar">
+            <div id="gerenciar_nav_bar_name">
+                <h2 class="name_user">
+                    <?php
+                    echo $usuario_nome;
+                    ?>
+                </h2>
+            </div>
             <div id="gerenciar_nav_bar_visualizar">
-
                 <?php
-                echo  $usuario_nome;
                 if ($usuario_permissao == "academia") {
                     echo '<button onclick="abrir_gerenciar_personais()"> Personais </button>';
                 }
                 ?>
                 <button onclick="abrir_gerenciar_alunos()"> Aluno</button>
                 <button onclick="abrir_gerenciar_treino()"> Treinos </button>
-                <button onclick="abrir_excluir()"> Excluir </button>
+                <?php
+                if ($usuario_permissao == "academia") {
+                    echo   '<button onclick="abri_excluir()"> Excluir </button>';
+                }
+                ?>
             </div>
             <div id="gerenciar_nav_bar_sair">
                 <button>
@@ -77,7 +86,7 @@ if (isset($_SESSION['permissao']) == true) {
                     <input type="text" name="personal_nome" placeholder="Digite o nome do personal" required>
                     <input type="text" name="personal_id" placeholder="Digite o id do personal" required>
                     <input type="email" name="personal_email" placeholder="Digite o email do personal" required>
-                    <input type="text" name="personal_senha" placeholder="Digite a senha do personal" required>
+                    <input type="password" name="personal_senha" placeholder="Digite a senha do personal" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
@@ -107,7 +116,7 @@ if (isset($_SESSION['permissao']) == true) {
                     <input type="text" name="aluno_id" placeholder="Digite o id do aluno" required>
                     <input type="email" name="aluno_email" placeholder="Digite o email do aluno" required>
                     <input type="password" name="aluno_senha" placeholder="Digite a senha do aluno" required>
-                    <input type="password" name="aluno_dia_pagamento" placeholder="Digite o dia do pagamento" required>
+                    <input type="number" name="aluno_dia_pagamento" placeholder="Digite o dia do pagamento" required>
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
@@ -146,13 +155,16 @@ if (isset($_SESSION['permissao']) == true) {
                 </form>
             </section>
         </section>
-        <section id=excluir>
+        <!-- Excluir -->
+        <section id="gerenciar_excluir">
+            <!-- <section id=excluir> -->
             <form action="../function/verificar.php?operacao=excluir" method="post">
                 <h2>EXCLUIR</h2>
                 <input type="text" name="excluir_id" placeholder="Digite o id para excluir" required>
                 <input type="text" name="excluir_tipo" placeholder="Digite o tipo de usuario" required>
                 <input type="submit" value="Cadastrar" id="button_enty">
             </form>
+            <!-- </section> -->
         </section>
     </main>
     <script src="../../assets/js/gerenciar_js.js"></script>

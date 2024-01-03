@@ -1,13 +1,14 @@
 <?php
 session_start();
-if ((isset($_SESSION['usuario_id']) == true)) {
-    if ((!isset($_SESSION['permissao']) == "aluno") || (!isset($_SESSION['permissao']) == "academia")) {
+if ($_SESSION['permissao'] == "aluno") {
+    if (!isset($_SESSION['usuario_id'])) {
         header('location: home.html');
     } else {
         $usuario_nome = $_SESSION['usuario_nome'];
         $usuario_id = $_SESSION['usuario_id'];
         $usuario_academia = $_SESSION['academia'];
         $usuario_permissao = $_SESSION['permissao'];
+        // $acesso_id = $_SESSION['acesso_id'];
         // session_destroy();
         require_once("../models/banco_conexao.php");
         require_once("../classes/aluno.php");
@@ -70,7 +71,7 @@ if ((isset($_SESSION['usuario_id']) == true)) {
                     <h3> Data de Pagamento </h3>
                     <p>
                         <?php
-                        $usuario_data_pagamento
+                        $aluno->buscar_dado("aluno_dia_pagamento", $usuario_id, $usuario_academia, $conexao);
                         ?>
                     </p>
 
@@ -82,19 +83,19 @@ if ((isset($_SESSION['usuario_id']) == true)) {
                 <h3> Peso</h3>
                 <p>
                     <?php
-                    $aluno->buscar_dado("aluno_peso", $usuario_academia, $conexao);
+                    $aluno->buscar_dado("aluno_peso", $usuario_id, $usuario_academia, $conexao);
                     ?>
                 </p>
                 <h3> Altura</h3>
                 <p>
                     <?php
-                    $aluno->buscar_dado("aluno_altura", $usuario_academia, $conexao);
+                    $aluno->buscar_dado("aluno_altura", $usuario_id, $usuario_academia, $conexao);
                     ?>
                 </p>
                 <h3> Condição</h3>
                 <p>
                     <?php
-                    $aluno->buscar_dado("aluno_condicao", $usuario_academia, $conexao);
+                    $aluno->buscar_dado("aluno_condicao", $usuario_id, $usuario_academia, $conexao);
                     ?>
                 </p>
             </div>

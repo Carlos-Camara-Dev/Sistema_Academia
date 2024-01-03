@@ -1,16 +1,18 @@
 <?php
 session_start();
-if ((isset($_SESSION['usuario_id']) == true)) {
-    if ((!isset($_SESSION['permissao']) == "aluno") || (!isset($_SESSION['permissao']) == "academia")) {
+if ($_SESSION['permissao'] == "aluno") {
+    if (!isset($_SESSION['usuario_id'])) {
         header('location: home.html');
     } else {
         $usuario_nome = $_SESSION['usuario_nome'];
         $usuario_id = $_SESSION['usuario_id'];
         $usuario_academia = $_SESSION['academia'];
         $usuario_permissao = $_SESSION['permissao'];
+        // $acesso_id = $_SESSION['acesso_id'];
         // session_destroy();
         require_once("../models/banco_conexao.php");
         require_once("../classes/aluno.php");
+        $aluno = new Aluno($conexao);
     }
 } else {
     header('location: home.html');
@@ -39,10 +41,53 @@ if ((isset($_SESSION['usuario_id']) == true)) {
             </button>
         </nav>
     </header>
-    <?php
-    $aluno = new Aluno($conexao);
-    $aluno->buscar_treinos_aluno($usuario_id, $conexao);
-    ?>
+    <section id="main">
+        <nav id="nav_bar_dias">
+            <button onclick="abrir_segunda()"> Segunda</button>
+            <button onclick="abrir_terca()"> Terça</button>
+            <button onclick="abrir_quarta()"> Quarta</button>
+            <button onclick="abrir_quinta()"> Quinta</button>
+            <button onclick="abrir_sexta()"> Sexta</button>
+        </nav>
+        <main id="main_treinos">
+            <section id="treino_segunda">
+                <h2 class="nome_dia"> Segunda </h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_treino_aluno($usuario_id, "segunda", $conexao);
+                ?>
+            </section>
+            <section id="treino_terca">
+                <h2 class="nome_dia"> Terça </h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_treino_aluno($usuario_id, "terça", $conexao);
+                ?>
+            </section>
+            <section id="treino_quarta">
+                <h2 class="nome_dia"> Quarta </h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_treino_aluno($usuario_id, "quarta", $conexao);
+                ?>
+            </section>
+            <section id="treino_quinta">
+                <h2 class="nome_dia"> Quinta </h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_treino_aluno($usuario_id, "quinta", $conexao);
+                ?>
+            </section>
+            <section id="treino_sexta">
+                <h2 class="nome_dia"> Sexta </h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_treino_aluno($usuario_id, "sexta", $conexao);
+                ?>
+            </section>
+        </main>
+    </section>
+    <script src="../../assets/js/treinos_dia.js"></script>
 </body>
 
 </html>

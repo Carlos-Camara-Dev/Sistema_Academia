@@ -54,7 +54,7 @@ class Academia
         echo '<script  type="text/javascript">' .
             "alert('A $academia_nome foi criada. Seja bem-vindo!');" .
             '</script>';
-        header('Location: ../views/gerenciar.html');
+        header('Location: ../views/gerenciar.php');
     }
     public function buscar_dados()
     {

@@ -35,11 +35,13 @@ h2 {
   border: 0.2rem solid #424242;
   /* width: 15.5rem; */
 }
-.cadastrar, #excluir {
+.cadastrar,
+#gerenciar_excluir {
   display: none;
   margin: 1rem;
 }
-.cadastrar form, #excluir form {
+.cadastrar form,
+#gerenciar_excluir form {
   align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
@@ -52,7 +54,8 @@ h2 {
   width: 23rem;
 }
 
-.cadastrar form input,  #excluir form input {
+.cadastrar form input,
+#gerenciar_excluir form input {
   border: 0.15rem solid #a2a2a2;
   border-radius: 0.9rem;
   margin: 0.75rem;
@@ -61,7 +64,8 @@ h2 {
 }
 #gerenciar_personais,
 #gerenciar_alunos,
-#gerenciar_treinos {
+#gerenciar_treinos,
+#gerenciar_excluir {
   align-items: center;
   background: #dcdcdc;
   border: 0.2rem solid #a2a2a2;
@@ -115,13 +119,16 @@ h2 {
   background: #cdcdcd;
   color: #000000;
 }
+#gerenciar_nav_bar_name {
+  width: 13vw;
+}
 #gerenciar_nav_bar_sair {
   width: 10vw;
 }
 
 #gerenciar_nav_bar_visualizar {
   display: flex;
-  width: 90vw;
+  width: 76vw;
 }
 #gerenciar_personais_lista,
 #gerenciar_alunos_lista,
@@ -152,4 +159,13 @@ h2 {
 .informacao td {
   padding: 1rem;
   text-align: center;
+}
+
+#gerenciar_nav_bar_name {
+  text-align: center;
+}
+.name_user {
+  border-bottom: 0.4rem solid #e70505;
+  border-radius: 0.5rem;
+  color: #272727;
 }

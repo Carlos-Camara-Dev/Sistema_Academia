@@ -10,7 +10,9 @@ session_start();
 // Verifica permissao:
 if (isset($_SESSION['usuario_id'])) {
     $usuario_id = $_SESSION['usuario_id'];
-    $usuario_acesso = $_SESSION['acesso_id'];
+    if (isset($_SESSION['acesso_id'])) {
+        $usuario_acesso = $_SESSION['acesso_id'];
+    }
 }
 $operacao = $_GET['operacao'];
 
@@ -30,7 +32,7 @@ if (isset($_POST['aluno_nome'])) {
     $aluno_id = $_POST['aluno_id'];
     $aluno_email = $_POST['aluno_email'];
     $aluno_senha = $_POST['aluno_senha'];
-    // $aluno_pagar_dia = $_POST['aluno_pagar_dia'];
+    $aluno_dia_pagamento = $_POST['aluno_dia_pagamento'];
     // $aluno_treino = $_POST['aluno_treino'];
 }
 // Dados dos Personal:
@@ -39,7 +41,6 @@ if (isset($_POST['personal_nome'])) {
     $personal_id = $_POST['personal_id'];
     $personal_senha = $_POST['personal_senha'];
     $personal_email = $_POST['personal_email'];
-    $aluno_dia_pagamento = $_POST['aluno_dia_pagamento'];
 }
 // Dados dos Treino:
 if (isset($_POST['treino_nome'])) {
@@ -126,7 +127,7 @@ switch ($operacao) {
         }
         break;
     case 'aluno_treino':
-        $verificar_aluno_treino = $conexao->query("SELECT * FROM aluno_treino WHERE aluno_id= '$aluno_id' AND treino_id='$treino_id' AND academia_id='$usuario_acesso'");
+        $verificar_aluno_treino = $conexao->query("SELECT * FROM aluno_treino WHERE aluno_id= '$aluno_id' AND treino_id='$treino_id' AND dia_treino = '$dia_treino' AND academia_id='$usuario_acesso'");
         $contador = $verificar_aluno_treino->rowCount();
 
         if ($contador > 0) {

@@ -44,7 +44,7 @@ if (isset($_POST['usuario_id'])) {
 
                     $_SESSION['permissao'] = "aluno";
                     $_SESSION['academia'] = $dados["aluno_academia"];
-                    // $_SESSION['acesso_id'] = $_POST['usuario_id'];
+                    $_SESSION['acesso_id'] = $_POST['usuario_id'];
                     header('Location: ../views/painel_perfil.php');
                 } else {
                     echo '<script  type="text/javascript">' .

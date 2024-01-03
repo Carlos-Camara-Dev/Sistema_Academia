@@ -84,7 +84,6 @@ class Aluno
                 <th>Aluno Nome</th>
                 <th>Aluno Email</th>
                 <th>Aluno Pagamento</th>
-                <th> Opções </th>
                 </tr>
                 <tr>
                 <td>' . $dados["aluno_id"] . "</td>
@@ -96,24 +95,23 @@ class Aluno
                 </div>";
         }
     }
-    function buscar_dado($dado_tipo, $aluno_academia, $conexao)
+    function buscar_dado($dado_tipo, $aluno_id, $aluno_academia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia'");
+        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia' and aluno_id = '$aluno_id'");
         // Puxa o dado a parti do seu tipo e dar echo:
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
             $informacao = $dados[$dado_tipo];
             echo $informacao;
         }
     }
-    function buscar_treinos_aluno($aluno_id, $conexao)
+    function buscar_treino_aluno($aluno_id, $treino_dia, $conexao)
     {
-        $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
+        $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' AND dia_treino = '$treino_dia'");
         // Verifica se o aluno tem treino:
         if ($comando->rowCount() > 0) {
             while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
                 // Verifica o id do treino na tabela Treino:
                 $treino_id = $dados["treino_id"];
-                $treino_dia = $dados["dia_treino"];
 
                 $comando_treino = $conexao->query("SELECT * FROM Treino WHERE treino_id = '$treino_id'");
                 // Puxa os dados do treino e dar um echo:
@@ -143,9 +141,9 @@ class Aluno
         $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
         echo $comando->rowCount();
     }
-    function atualizar_dados($aluno_id, $dado_tipo, $aluno_dado, $conexao)
+    function atualizar_dados($usuario_id, $dado_tipo, $aluno_dado, $conexao)
     {
-        $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='$aluno_dado' WHERE aluno_id='$aluno_id';");
+        $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='[$aluno_dado]' WHERE aluno_id='$usuario_id';");
     }
 
     function exluir($aluno_id, $conexao)

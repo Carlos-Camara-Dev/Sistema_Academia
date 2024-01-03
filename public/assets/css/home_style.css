@@ -31,7 +31,9 @@ body {
   width: 100vw;
 }
 #home_main section {
-  background: #cdcccc;
+  background-image: url("../img/academia_2.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
   border: 0.15rem solid #ffffff;
   height: 80vh;
   width: 75vw;
