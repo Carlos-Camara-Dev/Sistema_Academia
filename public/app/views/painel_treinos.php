@@ -41,7 +41,7 @@ if ($_SESSION['permissao'] == "aluno") {
             </button>
         </nav>
     </header>
-    <section id="main">
+    <section id="main_painel_treinos">
         <nav id="nav_bar_dias">
             <button onclick="abrir_segunda()"> Segunda</button>
             <button onclick="abrir_terca()"> Terça</button>
