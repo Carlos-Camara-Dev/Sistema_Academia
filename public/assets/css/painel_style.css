@@ -186,7 +186,10 @@ h3 {
 #treino_quarta,
 #treino_quinta,
 #treino_sexta {
+  border: 0.1rem solid #000000;
   display: none;
+  flex-direction: column;
+  text-align: center;
   width: 65vw;
 }
 /* Tabela de treinos: */
