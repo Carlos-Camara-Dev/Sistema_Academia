@@ -186,29 +186,37 @@ h3 {
 #treino_quarta,
 #treino_quinta,
 #treino_sexta {
-  border: 0.1rem solid #000000;
   display: none;
   flex-direction: column;
   text-align: center;
   width: 65vw;
 }
 /* Tabela de treinos: */
-
+.informacao {
+  align-items: center;
+  /* border: 0.1rem solid #000000; */
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  width: 65vw;
+}
 .informacao table,
 .informacao th,
 .informacao td {
   border: 0.15rem solid #000000;
   border-collapse: collapse;
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 1.1rem;
 }
 .informacao th,
 .informacao td {
-  padding: 1rem;
+  padding: 0.2rem;
   text-align: center;
 }
 .nome_dia {
   border-bottom: 0.4rem solid #e70505;
   border-radius: 0.5rem;
   color: #272727;
+  text-align: center;
+  width: 20vh;
 }
