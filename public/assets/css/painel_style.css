@@ -199,7 +199,7 @@ h3 {
   display: flex;
   justify-content: center;
   margin: 1rem;
-  width: 65vw;
+  width: 60vw;
 }
 .informacao table,
 .informacao th,
@@ -207,11 +207,11 @@ h3 {
   border: 0.15rem solid #000000;
   border-collapse: collapse;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .informacao th,
 .informacao td {
-  padding: 0.2rem;
+  padding: 0.3rem;
   text-align: center;
 }
 .nome_dia {
