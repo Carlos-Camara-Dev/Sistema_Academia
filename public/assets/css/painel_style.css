@@ -188,6 +188,7 @@ h3 {
 #treino_sexta {
   display: none;
   flex-direction: column;
+  height: 60vh;
   overflow: scroll;
   text-align: center;
   width: 65vw;
