@@ -150,10 +150,10 @@ class Aluno
                 $aluno_treino = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' ORDER BY dia_treino ASC");
                 // Puxa os dados do treino e dar um echo:
 
-                $dados_treino = $aluno_treino->fetch(PDO::FETCH_ASSOC);
-                echo '<div class="informacao">' .
-                    '<table>' .
-                    '<tr>
+                while ($dados_treino = $aluno_treino->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<div class="informacao">' .
+                        '<table>' .
+                        '<tr>
                         <th>Aluno Id</th>
                         <th>Treino Id</th>
                         <th>Dia do Treino</th>
@@ -165,6 +165,7 @@ class Aluno
                         </tr>
                         </table>
                         </div>";
+                }
             }
         }
     }
