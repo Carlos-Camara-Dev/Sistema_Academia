@@ -98,6 +98,7 @@ if (isset($_SESSION['permissao'])) {
                 <button onclick="abrir_cadastrar_aluno()"> Cadastrar Aluno </button>
                 <button onclick="abrir_cadastrar_aluno_treino()">Aluno Treino </button>
                 <button onclick="abrir_gerenciar_alunos_lista()"> Gerenciar Alunos </button>
+                <button onclick="abrir_gerenciar_alunos_treinos()"> Treinos </button>
             </nav>
             <!-- Lista de Alunos -->
             <section id="gerenciar_alunos_lista">
@@ -105,6 +106,15 @@ if (isset($_SESSION['permissao'])) {
                 <?php
                 $aluno = new Aluno($conexao);
                 $aluno->buscar_dados($usuario_acesso, $conexao);
+                ?>
+
+            </section>
+            <!-- Gerenciar Alunos nos Treinos: -->
+            <section id="gerenciar_alunos_treinos_lista">
+                <h2>Gerenciar Alunos Treinos</h2>
+                <?php
+                $aluno = new Aluno($conexao);
+                $aluno->buscar_alunos_treinos($usuario_id, $conexao);
                 ?>
 
             </section>
@@ -130,11 +140,13 @@ if (isset($_SESSION['permissao'])) {
                     <input type="submit" value="Cadastrar" id="button_enty">
                 </form>
             </section>
+
         </section>
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
             <nav>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button
+                    onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
             </nav>
             <!-- Lista de Treinos -->
             <section id="gerenciar_treinos_lista">
@@ -162,7 +174,7 @@ if (isset($_SESSION['permissao'])) {
                 <h2>EXCLUIR</h2>
                 <input type="text" name="excluir_id" placeholder="Digite o id para excluir" required>
                 <input type="text" name="excluir_tipo" placeholder="Digite o tipo de usuario" required>
-                <input type="submit" value="Cadastrar" id="button_enty">
+                <input type="submit" value="Excluir" id="button_enty">
             </form>
             <!-- </section> -->
         </section>

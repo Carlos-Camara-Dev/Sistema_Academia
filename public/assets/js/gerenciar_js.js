@@ -2,7 +2,8 @@
 let cadastrar_personal = document.getElementById("cadastrar_personal"), gerenciar_personais = document.getElementById("gerenciar_personais"), gerenciar_personais_lista = document.getElementById("gerenciar_personais_lista"),
     cadastrar_aluno = document.getElementById("cadastrar_aluno"),
     cadastrar_aluno_treino = document.getElementById("cadastrar_aluno_treino"),
-    gerenciar_alunos = document.getElementById("gerenciar_alunos"), gerenciar_alunos_lista = document.getElementById("gerenciar_alunos_lista"),
+    gerenciar_alunos = document.getElementById("gerenciar_alunos"),
+    gerenciar_alunos_treinos_lista = document.getElementById("gerenciar_alunos_treinos_lista"), gerenciar_alunos_lista = document.getElementById("gerenciar_alunos_lista"),
     cadastrar_treino = document.getElementById("cadastrar_treino"), gerenciar_treinos_lista = document.getElementById("gerenciar_treinos_lista"), gerenciar_treinos = document.getElementById("gerenciar_treinos"), gerenciar_excluir = document.getElementById("gerenciar_excluir");
 
 // Gerenciar Adm's:
@@ -49,6 +50,7 @@ function abrir_gerenciar_alunos() {
         if (gerenciar_excluir.style.display != "none") {
             gerenciar_excluir.style.display = "none";
         }
+
     }
 }
 function abrir_cadastrar_aluno_treino() {
@@ -59,6 +61,9 @@ function abrir_cadastrar_aluno_treino() {
         }
         if (gerenciar_alunos_lista.style.display != "none") {
             gerenciar_alunos_lista.style.display = "none";
+        }
+        if (gerenciar_alunos_treinos_lista.style.display != "none") {
+            gerenciar_alunos_treinos_lista.style.display = "none";
         }
     }
 }
@@ -71,6 +76,9 @@ function abrir_gerenciar_alunos_lista() {
         if (cadastrar_aluno_treino.style.display != "none") {
             cadastrar_aluno_treino.style.display = "none";
         }
+        if (gerenciar_alunos_treinos_lista.style.display != "none") {
+            gerenciar_alunos_treinos_lista.style.display = "none";
+        }
     }
 
 } function abrir_cadastrar_aluno() {
@@ -82,6 +90,24 @@ function abrir_gerenciar_alunos_lista() {
         if (cadastrar_aluno_treino.style.display != "none") {
             cadastrar_aluno_treino.style.display = "none";
         }
+        if (gerenciar_alunos_treinos_lista.style.display != "none") {
+            gerenciar_alunos_treinos_lista.style.display = "none";
+        }
+    }
+}
+function abrir_gerenciar_alunos_treinos() {
+    if (gerenciar_alunos_treinos_lista.style.display != "flex") {
+        gerenciar_alunos_treinos_lista.style.display = "flex";
+        if (cadastrar_aluno.style.display != "none") {
+            cadastrar_aluno.style.display = "none";
+        }
+        if (gerenciar_alunos_lista.style.display != "none") {
+            gerenciar_alunos_lista.style.display = "none";
+        }
+        if (cadastrar_aluno_treino.style.display != "none") {
+            cadastrar_aluno_treino.style.display = "none";
+        }
+
     }
 }
 // Gerenciar Treinos:

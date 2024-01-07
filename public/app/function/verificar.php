@@ -60,8 +60,9 @@ if (isset($_POST['aluno_altura'])) {
     $aluno_peso = $_POST['aluno_peso'];
     $aluno_condicao = $_POST['aluno_condicao'];
 }
+// Excluir: 
 if (isset($_POST['excluir_id'])) {
-    $excluir = $_POST['exluir_id'];
+    $excluir_id = $_POST['excluir_id'];
     $excluir_tipo = $_POST['excluir_tipo'];
 }
 switch ($operacao) {
@@ -136,9 +137,29 @@ switch ($operacao) {
                 'window.history.back();
                         </script>';
         } else {
-            $cadastrar_personal = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, dia_treino, academia_id) VALUES('$aluno_id', '$treino_id','$dia_treino','$usuario_acesso')");
-            echo '<script  type="text/javascript">' .
-                "alert('O treino de $aluno_id foi criado.');" .  'window.history.back();</script>';
+
+            $verificar_treino = $conexao->query("SELECT * FROM aluno WHERE aluno_id= '$aluno_id' AND aluno_academia='$usuario_acesso'");
+            $contador = $verificar_treino->rowCount();
+
+            if ($contador > 0) {
+
+                $verificar_treino = $conexao->query("SELECT * FROM treino WHERE treino_id= '$treino_id' AND treino_academia='$usuario_acesso'");
+                $contador = $verificar_treino->rowCount();
+
+                if ($contador > 0) {
+
+                    $cadastrar_aluno_treino = $conexao->query("INSERT INTO Aluno_treino(aluno_id, treino_id, dia_treino, academia_id) VALUES('$aluno_id', '$treino_id','$dia_treino','$usuario_acesso')");
+
+                    echo '<script  type="text/javascript">' .
+                        "alert('O treino de $aluno_id foi criado.');" .  'window.history.back();</script>';
+                } else {
+                    echo '<script  type="text/javascript">' .
+                        "alert('O treino $treino_id não existe.');" .  'window.history.back();</script>';
+                }
+            } else {
+                echo '<script  type="text/javascript">' .
+                    "alert('O aluno $aluno_id não existe.');" .  'window.history.back();</script>';
+            }
         }
         break;
     case 'aluno_dados':
@@ -153,8 +174,37 @@ switch ($operacao) {
         session_destroy();
         header('Location: ../views/home.html');
         break;
+
     case 'excluir':
-        $comando = $conexao->query("DELETE FROM '$excluir_tipo' WHERE '$exluir_tipo'_id='$personal_id");
+        if ($excluir_tipo == "personal") {
+            $verificar_personal = $conexao->query("SELECT * FROM personal WHERE personal_id='$excluir_id'");
+
+            $contador = $verificar_personal->rowCount();
+
+            if ($contador > 0) {
+                $comando = $conexao->query("DELETE FROM personal WHERE personal_id='$excluir_id'");
+                echo '<script  type="text/javascript">' .
+                    "alert('O Usuario com o id: $excluir_id, foi excluido.');" .  'window.history.back();</script>';
+            } else {
+                echo '<script  type="text/javascript">' .
+                    "alert('O Usuario com o id: $excluir_id, não existe.');" .  'window.history.back();</script>';
+            }
+        }
+        if ($excluir_tipo == "aluno") {
+
+            $verificar_aluno = $conexao->query("SELECT * FROM aluno WHERE aluno_id='$excluir_id'");
+
+            $contador = $verificar_aluno->rowCount();
+
+            if ($contador > 0) {
+                $comando = $conexao->query("DELETE FROM aluno WHERE aluno_id='$excluir_id'");
+                echo '<script  type="text/javascript">' .
+                    "alert('O Usuario com o id: $excluir_id, foi excluido.');" .  'window.history.back();</script>';
+            } else {
+                echo '<script  type="text/javascript">' .
+                    "alert('O Usuario com o id: $excluir_id, não existe.');" .  'window.history.back();</script>';
+            }
+        }
         break;
     default:
         break;

@@ -120,6 +120,7 @@ class Aluno
                 echo '<div class="informacao">' .
                     '<table>' .
                     '<tr>
+                        <th>Id</th>
                         <th>Treino</th>
                         <th>Tipo de Treino</th>
                         <th>Descricao</th>
@@ -136,6 +137,37 @@ class Aluno
             }
         }
     }
+
+    function buscar_alunos_treinos($aluno_academia, $conexao)
+    {
+        $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$aluno_academia'");
+        // Verifica se o aluno tem treino:
+        if ($comando->rowCount() > 0) {
+            while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+                // Verifica o id do treino na tabela Treino:
+                $aluno_id = $dados["aluno_id"];
+
+                $aluno_treino = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' ORDER BY dia_treino ASC");
+                // Puxa os dados do treino e dar um echo:
+
+                $dados_treino = $aluno_treino->fetch(PDO::FETCH_ASSOC);
+                echo '<div class="informacao">' .
+                    '<table>' .
+                    '<tr>
+                        <th>Aluno Id</th>
+                        <th>Treino Id</th>
+                        <th>Dia do Treino</th>
+                        </tr>
+                        <tr>
+                        <td>' . $dados_treino["aluno_id"] . "</td>
+                        <td>" . $dados_treino["treino_id"] . "</td> 
+                        <td>" . $dados_treino["dia_treino"] . "</td>
+                        </tr>
+                        </table>
+                        </div>";
+            }
+        }
+    }
     function treinos_quantidade($aluno_id, $conexao)
     {
         $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
@@ -144,10 +176,5 @@ class Aluno
     function atualizar_dados($usuario_id, $dado_tipo, $aluno_dado, $conexao)
     {
         $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='[$aluno_dado]' WHERE aluno_id='$usuario_id';");
-    }
-
-    function exluir($aluno_id, $conexao)
-    {
-        $comando = $conexao->query("DELETE FROM Aluno WHERE aluno_id='$aluno_id");
     }
 }

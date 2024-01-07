@@ -188,10 +188,10 @@ h3 {
 #treino_sexta {
   display: none;
   flex-direction: column;
-  height: 60vh;
+  height: 80vh;
   overflow: scroll;
   text-align: center;
-  width: 65vw;
+  width: 70vw;
 }
 /* Tabela de treinos: */
 .informacao {
@@ -208,11 +208,11 @@ h3 {
   border: 0.15rem solid #000000;
   border-collapse: collapse;
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .informacao th,
 .informacao td {
-  padding: 0.3rem;
+  padding: 0.7rem;
   text-align: center;
 }
 .nome_dia {
