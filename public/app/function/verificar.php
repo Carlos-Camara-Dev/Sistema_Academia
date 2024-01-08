@@ -163,12 +163,15 @@ switch ($operacao) {
         }
         break;
     case 'aluno_dados':
-        $aluno = new Aluno($conexao);
-        $aluno->atualizar_dados($usuario_id, "aluno_altura", $aluno_altura, $conexao);
-        $aluno->atualizar_dados($usuario_id, "aluno_peso", $aluno_peso, $conexao);
-        $aluno->atualizar_dados($usuario_id, "aluno_condicao", $aluno_condicao, $conexao);
-        echo '<script  type="text/javascript">' .
-            "alert('$aluno_nome, os seus dados foram atualizados.');" .  'window.history.back();</script>';
+        $comando = $conexao->query("UPDATE `aluno` SET `aluno_altura`='$aluno_altura',`aluno_peso`='$aluno_peso',`aluno_condicao`='$aluno_condicao' WHERE `aluno_id`='$usuario_id';");
+
+        if ($comando->rowCount() > 0) {
+            echo '<script  type="text/javascript">' .
+                "alert('Os seus dados foram atualizados.');" .  'window.history.back();</script>';
+        } else {
+            echo '<script  type="text/javascript">' .
+                "alert('Estamos com um problema no Banco de Dados. Tente mais tarde');" .  'window.history.back();</script>';
+        }
         break;
     case 'destroy':
         session_destroy();

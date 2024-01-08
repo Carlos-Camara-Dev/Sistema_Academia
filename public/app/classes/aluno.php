@@ -120,7 +120,6 @@ class Aluno
                 echo '<div class="informacao">' .
                     '<table>' .
                     '<tr>
-                        <th>Id</th>
                         <th>Treino</th>
                         <th>Tipo de Treino</th>
                         <th>Descricao</th>
@@ -173,9 +172,5 @@ class Aluno
     {
         $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id'");
         echo $comando->rowCount();
-    }
-    function atualizar_dados($usuario_id, $dado_tipo, $aluno_dado, $conexao)
-    {
-        $comando = $conexao->query("UPDATE Aluno SET '$dado_tipo'='[$aluno_dado]' WHERE aluno_id='$usuario_id';");
     }
 }

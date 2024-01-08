@@ -145,8 +145,7 @@ if (isset($_SESSION['permissao'])) {
         <!-- Gerenciar Treinos -->
         <section id="gerenciar_treinos">
             <nav>
-                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button
-                    onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
+                <button onclick="abrir_cadastrar_treino()"> Cadastrar Treino </button><button onclick="abrir_gerenciar_treinos_lista()"> Gerenciar Treinos </button>
             </nav>
             <!-- Lista de Treinos -->
             <section id="gerenciar_treinos_lista">

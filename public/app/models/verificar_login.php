@@ -10,6 +10,9 @@ if (isset($_POST['usuario_id'])) {
     session_start();
 
     $usuario_id = $_POST['usuario_id'];
+    $usuario_nome = $_POST['usuario_nome'];
+    $usuario_senha = $_POST['usuario_senha'];
+
 
     $_SESSION['usuario_nome'] = $_POST['usuario_nome'];
     $_SESSION['usuario_id'] = $_POST['usuario_id'];
@@ -22,10 +25,33 @@ if (isset($_POST['usuario_id'])) {
 
         $contador = $verificar_cnpj->rowCount();
 
-        if ($contador = 1) {
-            $_SESSION['permissao'] = "academia";
-            $_SESSION['acesso_id'] = $_POST['usuario_id'];
-            header('Location: ../views/gerenciar.php');
+        if ($contador == 1) {
+            $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj='$usuario_id' AND academia_senha='$usuario_senha';");
+
+            $contador = $verificar_cnpj->rowCount();
+
+            if ($contador == 1) {
+
+                $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj='$usuario_id' AND academia_senha='$usuario_senha' AND academia_nome = '$usuario_nome'");
+
+                $contador = $verificar_cnpj->rowCount();
+
+                if ($contador == 1) {
+                    $_SESSION['permissao'] = "academia";
+                    $_SESSION['acesso_id'] = $_POST['usuario_id'];
+                    header('Location: ../views/gerenciar.php');
+                } else {
+                    echo '<script  type="text/javascript">' .
+                        "alert('Nome incorreta!');" .
+                        'window.history.back();
+                </script>';
+                }
+            } else {
+                echo '<script  type="text/javascript">' .
+                    "alert('Senha incorreta!');" .
+                    'window.history.back();
+                </script>';
+            }
         } else {
             echo '<script  type="text/javascript">' .
                 "alert('O usuario não possui um cadastro!');" .
@@ -39,13 +65,38 @@ if (isset($_POST['usuario_id'])) {
 
                 $contador = $verificar->rowCount();
 
-                if ($contador = 1) {
-                    $dados = $verificar->fetch(PDO::FETCH_ASSOC);
+                if ($contador == 1) {
 
-                    $_SESSION['permissao'] = "aluno";
-                    $_SESSION['academia'] = $dados["aluno_academia"];
-                    $_SESSION['acesso_id'] = $_POST['usuario_id'];
-                    header('Location: ../views/painel_perfil.php');
+                    $verificar = $conexao->query("SELECT * FROM Aluno WHERE aluno_id='$usuario_id' AND aluno_senha='$usuario_senha';");
+
+                    $contador = $verificar->rowCount();
+
+                    if ($contador == 1) {
+
+                        $verificar = $conexao->query("SELECT * FROM Aluno WHERE aluno_id='$usuario_id'  AND aluno_senha='$usuario_senha' AND aluno_nome = '$usuario_nome'");
+
+                        $contador = $verificar->rowCount();
+
+                        if ($contador == 1) {
+                            $dados = $verificar->fetch(PDO::FETCH_ASSOC);
+
+                            $_SESSION['permissao'] = "aluno";
+                            $_SESSION['academia'] = $dados["aluno_academia"];
+                            $_SESSION['acesso_id'] = $_POST['usuario_id'];
+                            header('Location: ../views/painel_perfil.php');
+                        } else {
+                            echo '<script  type="text/javascript">' .
+                                "alert('Nome Incorreto!');" .
+                                'window.history.back();
+                    </script>';
+                        }
+                    } else {
+
+                        echo '<script  type="text/javascript">' .
+                            "alert('Senha Incorreta!');" .
+                            'window.history.back();
+                    </script>';
+                    }
                 } else {
                     echo '<script  type="text/javascript">' .
                         "alert('O usuario não possui um cadastro!');" .
@@ -59,12 +110,34 @@ if (isset($_POST['usuario_id'])) {
 
                 $contador = $verificar->rowCount();
 
-                if ($contador = 1) {
-                    $dados = $verificar->fetch(PDO::FETCH_ASSOC);
+                if ($contador == 1) {
 
-                    $_SESSION['permissao'] = "personal";
-                    $_SESSION['acesso_id'] = $dados["personal_academia"];
-                    header('Location: ../views/gerenciar.php');
+                    $verificar = $conexao->query("SELECT * FROM Personal WHERE personal_id='$usuario_id' AND personal_senha='$usuario_senha'");
+
+                    $contador = $verificar->rowCount();
+                    if ($contador == 1) {
+
+                        $verificar = $conexao->query("SELECT * FROM Personal WHERE personal_id='$usuario_id' AND personal_senha='$usuario_senha' AND personal_nome = '$usuario_nome'");
+
+                        $contador = $verificar->rowCount();
+                        if ($contador == 1) {
+                            $dados = $verificar->fetch(PDO::FETCH_ASSOC);
+
+                            $_SESSION['permissao'] = "personal";
+                            $_SESSION['acesso_id'] = $dados["personal_academia"];
+                            header('Location: ../views/gerenciar.php');
+                        } else {
+                            echo '<script  type="text/javascript">' .
+                                "alert('Nome incorreto!');" .
+                                'window.history.back();
+                        </script>';
+                        }
+                    } else {
+                        echo '<script  type="text/javascript">' .
+                            "alert('Senha incorreta!');" .
+                            'window.history.back();
+                        </script>';
+                    }
                 } else {
                     echo '<script  type="text/javascript">' .
                         "alert('O usuario não possui um cadastro!');" .
