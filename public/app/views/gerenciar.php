@@ -55,6 +55,7 @@ if (isset($_SESSION['permissao'])) {
                     echo   '<button onclick="abri_excluir()"> Excluir </button>';
                 }
                 ?>
+
             </div>
             <div id="gerenciar_nav_bar_sair">
                 <button>
@@ -99,6 +100,9 @@ if (isset($_SESSION['permissao'])) {
                 <button onclick="abrir_cadastrar_aluno_treino()">Aluno Treino </button>
                 <button onclick="abrir_gerenciar_alunos_lista()"> Gerenciar Alunos </button>
                 <button onclick="abrir_gerenciar_alunos_treinos()"> Treinos </button>
+                <button>
+                    <a href="../models/pdf.php">PDF</a>
+                </button>
             </nav>
             <!-- Lista de Alunos -->
             <section id="gerenciar_alunos_lista">
@@ -114,7 +118,7 @@ if (isset($_SESSION['permissao'])) {
                 <h2>Gerenciar Alunos Treinos</h2>
                 <?php
                 $aluno = new Aluno($conexao);
-                $aluno->buscar_alunos_treinos($usuario_id, $conexao);
+                $aluno->buscar_alunos_treinos($usuario_acesso, $conexao);
                 ?>
 
             </section>
@@ -172,7 +176,7 @@ if (isset($_SESSION['permissao'])) {
             <form action="../function/verificar.php?operacao=excluir" method="post">
                 <h2>EXCLUIR</h2>
                 <input type="text" name="excluir_id" placeholder="Digite o id para excluir" required>
-                <input type="text" name="excluir_tipo" placeholder="Digite o tipo de usuario" required>
+                <input type="text" name="excluir_tipo" placeholder="Aluno, personal ou treino" required>
                 <input type="submit" value="Excluir" id="button_enty">
             </form>
             <!-- </section> -->

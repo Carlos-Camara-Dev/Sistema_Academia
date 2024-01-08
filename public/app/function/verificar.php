@@ -208,6 +208,21 @@ switch ($operacao) {
                     "alert('O Usuario com o id: $excluir_id, não existe.');" .  'window.history.back();</script>';
             }
         }
+        if ($excluir_tipo == "treino") {
+
+            $verificar_aluno = $conexao->query("SELECT * FROM treino WHERE treino_id='$excluir_id'");
+
+            $contador = $verificar_aluno->rowCount();
+
+            if ($contador > 0) {
+                $comando = $conexao->query("DELETE FROM treino WHERE treino_id='$excluir_id'");
+                echo '<script  type="text/javascript">' .
+                    "alert('O treino com o id: $excluir_id, foi excluido.');" .  'window.history.back();</script>';
+            } else {
+                echo '<script  type="text/javascript">' .
+                    "alert('O treino com o id: $excluir_id, não existe.');" .  'window.history.back();</script>';
+            }
+        }
         break;
     default:
         break;
