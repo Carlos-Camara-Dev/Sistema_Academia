@@ -19,12 +19,17 @@ function gerar_pdf($usuario_acesso, $conexao)
         while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
 
             $aluno_id = $dados["aluno_id"];
-
+            $aluno_peso = $dados["aluno_peso"];
+            $aluno_altura = $dados["aluno_altura"];
+            $aluno_condicao = $dados["aluno_condicao"];
             $aluno_treino = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' ORDER BY dia_treino ASC");
 
-            $htmlContent = '<div class="informacao"><h3>Lista de Alunos e Seus Treinos>' .
+            $htmlContent = '<div class="informacao"><h3>Lista de Alunos e Seus Treinos</h3>' .
                 '<table>' .
                 '<tr>
+                <th>Aluno Id</th>
+                <th>Treino Id</th>
+                <th>Dia do Treino</th>
                 <th>Aluno Id</th>
                 <th>Treino Id</th>
                 <th>Dia do Treino</th>
@@ -35,6 +40,9 @@ function gerar_pdf($usuario_acesso, $conexao)
                 <td>' . $dados_treino["aluno_id"] . '</td>
                 <td>' . $dados_treino["treino_id"] . '</td> 
                 <td>' . $dados_treino["dia_treino"] . '</td>
+                <td>' . $aluno_peso . '</td>
+                <td>' . $aluno_altura . '</td>
+                <td>' . $aluno_condicao . '</td>
             </tr>';
             }
 
@@ -44,7 +52,7 @@ function gerar_pdf($usuario_acesso, $conexao)
 
             $dompdf->render();
 
-            $dompdf->stream('Lista_alunos_treino.pdf');
+            $dompdf->stream('lista_alunos_treino.pdf');
         }
     }
 }

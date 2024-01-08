@@ -145,6 +145,9 @@ class Aluno
             while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
                 // Verifica o id do treino na tabela Treino:
                 $aluno_id = $dados["aluno_id"];
+                $aluno_peso = $dados["aluno_peso"];
+                $aluno_altura = $dados["aluno_altura"];
+                $aluno_condicao = $dados["aluno_condicao"];
 
                 $aluno_treino = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' ORDER BY dia_treino ASC");
                 // Puxa os dados do treino e dar um echo:
@@ -156,11 +159,17 @@ class Aluno
                         <th>Aluno Id</th>
                         <th>Treino Id</th>
                         <th>Dia do Treino</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Condicao</th>
                         </tr>
                         <tr>
                         <td>' . $dados_treino["aluno_id"] . "</td>
                         <td>" . $dados_treino["treino_id"] . "</td> 
                         <td>" . $dados_treino["dia_treino"] . "</td>
+                        <td>" . $aluno_peso . "</td>
+                        <td>" . $aluno_altura . "</td>
+                        <td>" . $aluno_condicao . "</td>
                         </tr>
                         </table>
                         </div>";
