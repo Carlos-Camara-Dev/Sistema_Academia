@@ -35,10 +35,15 @@ if ($_SESSION['permissao'] == "aluno") {
                 <a href="painel_treinos.php">Treinos</a>
             </button>
             <button>
-                <a href="painel_perfil.php">Perfil </a> </button>
+                <a href="painel_perfil.php">Perfil </a>
+            </button>
+            <button>
+                <a href="../models/pdf.php?operacao=aluno_treino">PDF</a>
+            </button>
             <button>
                 <a href="../function/verificar.php?operacao=destroy">Sair</a>
             </button>
+
         </nav>
     </header>
     <section id="main_painel_treinos">
@@ -48,6 +53,7 @@ if ($_SESSION['permissao'] == "aluno") {
             <button onclick="abrir_quarta()"> Quarta</button>
             <button onclick="abrir_quinta()"> Quinta</button>
             <button onclick="abrir_sexta()"> Sexta</button>
+
         </nav>
         <main id="main_treinos">
             <section id="treino_segunda">

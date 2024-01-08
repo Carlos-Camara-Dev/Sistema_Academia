@@ -19,7 +19,7 @@ if (isset($_POST['usuario_id'])) {
 
     $id = str_split($_POST['usuario_id']);
 
-    if (count($id) == 9) {
+    if (count($id) == 14) {
 
         $verificar_cnpj = $conexao->query("SELECT * FROM Academia WHERE academia_cnpj='$usuario_id'");
 

@@ -8,7 +8,13 @@ require_once("../models/banco_conexao.php");
 
 session_start();
 $usuario_acesso = $_SESSION['acesso_id'];
+$operacao = $_GET['operacao'];
 
+if ($operacao == "aluno_treino") {
+    gerar_pdf_aluno($usuario_acesso, $conexao);
+} elseif ($operacao == "alunos_treinos") {
+    gerar_pdf($usuario_acesso, $conexao);
+}
 function gerar_pdf($usuario_acesso, $conexao)
 {
     $comando = $conexao->query("SELECT * FROM Aluno WHERE aluno_academia = '$usuario_acesso'");
@@ -22,21 +28,22 @@ function gerar_pdf($usuario_acesso, $conexao)
             $aluno_peso = $dados["aluno_peso"];
             $aluno_altura = $dados["aluno_altura"];
             $aluno_condicao = $dados["aluno_condicao"];
+
             $aluno_treino = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$aluno_id' ORDER BY dia_treino ASC");
 
-            $htmlContent = '<div class="informacao"><h3>Lista de Alunos e Seus Treinos</h3>' .
+            $html = '<div class="informacao"><h3>Lista de Alunos e Seus Treinos</h3>' .
                 '<table>' .
                 '<tr>
                 <th>Aluno Id</th>
                 <th>Treino Id</th>
                 <th>Dia do Treino</th>
-                <th>Aluno Id</th>
-                <th>Treino Id</th>
-                <th>Dia do Treino</th>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>Condicao</th>
             </tr>';
 
             while ($dados_treino = $aluno_treino->fetch(PDO::FETCH_ASSOC)) {
-                $htmlContent .= '<tr>
+                $html .= '<tr>
                 <td>' . $dados_treino["aluno_id"] . '</td>
                 <td>' . $dados_treino["treino_id"] . '</td> 
                 <td>' . $dados_treino["dia_treino"] . '</td>
@@ -46,9 +53,9 @@ function gerar_pdf($usuario_acesso, $conexao)
             </tr>';
             }
 
-            $htmlContent .= '</table></div>';
+            $html .= '</table></div>';
 
-            $dompdf->loadHtml($htmlContent);
+            $dompdf->loadHtml($html);
 
             $dompdf->render();
 
@@ -56,4 +63,47 @@ function gerar_pdf($usuario_acesso, $conexao)
         }
     }
 }
-gerar_pdf($usuario_acesso, $conexao);
+
+function gerar_pdf_aluno($usuario_acesso, $conexao)
+{
+    $comando = $conexao->query("SELECT * FROM Aluno_Treino WHERE aluno_id = '$usuario_acesso'");
+
+    $dompdf = new Dompdf\Dompdf();
+
+    if ($comando->rowCount() > 0) {
+
+        $html = '<div class="informacao">
+        <h3>Lista de Alunos e Seus Treinos</h3>' .
+            '<table>' .
+            '<tr>
+                <th>Treino</th>
+                <th>Tipo de Treino</th>
+                <th>Descricao</th>
+                <th>Dia do Treino</th>
+            </tr>';
+
+        while ($dados = $comando->fetch(PDO::FETCH_ASSOC)) {
+
+            $treino_id = $dados["treino_id"];
+            $dia_treino = $dados["dia_treino"];
+
+            $comando_treino = $conexao->query("SELECT * FROM Treino WHERE treino_id = '$treino_id'");
+            $dados_treino = $comando_treino->fetch(PDO::FETCH_ASSOC);
+
+            $html .= '<tr>
+                <td>' . $dados_treino["treino_nome"] . '</td>
+                <td>' . $dados_treino["treino_tipo"] . '</td> 
+                <td>' . $dados_treino["treino_descricao"] . '</td>
+                <td>' . $dia_treino . '</td>
+            </tr>';
+        }
+
+        $html .= '</table></div>';
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->render();
+
+        $dompdf->stream('lista_treinos.pdf');
+    }
+}

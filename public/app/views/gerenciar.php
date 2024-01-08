@@ -101,7 +101,7 @@ if (isset($_SESSION['permissao'])) {
                 <button onclick="abrir_gerenciar_alunos_lista()"> Gerenciar Alunos </button>
                 <button onclick="abrir_gerenciar_alunos_treinos()"> Treinos </button>
                 <button>
-                    <a href="../models/pdf.php">PDF</a>
+                    <a href="../models/pdf.php?operacao=alunos_treinos">PDF</a>
                 </button>
             </nav>
             <!-- Lista de Alunos -->
